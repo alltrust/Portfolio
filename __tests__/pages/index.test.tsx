@@ -18,8 +18,6 @@ describe('<index>', ()=>{
 
     const helloHeading = screen.getByRole('heading', { name: /hellox/i });
 
-    screen.debug();
-
     expect(helloHeading).toBeInTheDocument();
 
   });

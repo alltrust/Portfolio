@@ -5,9 +5,18 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:import/errors",
     "plugin:import/warnings"
   ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2023,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@emotion"],
   "rules": {
     "no-multi-spaces": "error",
     "object-curly-spacing": ["error", "always"],
@@ -18,7 +27,13 @@
     "no-mixed-spaces-and-tabs": "error",
     "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 0, "maxEOF": 1 }],
     "no-eq-null": "warn",
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "@emotion/jsx-import": "error",
+    "@emotion/pkg-renaming": "error",
+    "@emotion/no-vanilla": "error",
+    "@emotion/import-from-emotion": "error",
+    "@emotion/styled-import": "error"
+    
 
   }
 }
