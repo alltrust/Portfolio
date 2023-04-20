@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Head from 'next/head';
 import '../styles/globals.css';
+import { CssBaseline } from '@mui/material';
 import type { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from '../styles/theme';
+import { theme, lightTheme } from '../styles/theme';
 import createEmotionCache from '../lib/createEmotionCache';
+import HideAppBar from '../components/ui/HideAppBar';
 
 //try creating a HEAD component with attributes
 
@@ -30,7 +32,10 @@ function MyApp(props: IAppProps) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <CssBaseline/>
+        <HideAppBar>
+          <Component {...pageProps} />
+        </HideAppBar>
       </ThemeProvider>
     </CacheProvider>
   );
