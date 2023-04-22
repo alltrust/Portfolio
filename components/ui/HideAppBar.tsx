@@ -1,59 +1,50 @@
-import * as React from 'react';
+import { css } from '@emotion/react';
+import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import Switch from '@mui/material/Switch';
 import Slide from '@mui/material/Slide';
+import { useTheme } from 'next-themes';
 
-interface Props {
-  children: React.ReactElement;
-}
+const HideAppBar = () => {
+  const defaultStyle = css`
+    min-height: 162.38px;
+  `;
 
-function HideOnScroll(props: Props) {
-
-  const { children } = props;
-
+  const { theme, resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const trigger = useScrollTrigger();
 
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
+  useEffect(() => setMounted(true), []);
 
-}
+  if (!mounted)
+    return (
+      <div
+        // eslint-disable-next-line @emotion/jsx-import
+        css={defaultStyle}
+      ></div>
+    );
 
-const HideAppBar =(props: Props) =>{
+  const toggleDarkMode = () => {
+    setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
+  };
 
   return (
     <>
-      <HideOnScroll {...props}>
+      <Slide appear={false} direction="down" in={!trigger}>
         <AppBar>
           <Toolbar>
             <Typography variant="h6" component="div">
-              Scroll to hide App bar
+              {theme}
             </Typography>
+            <Switch onClick={toggleDarkMode} />
           </Toolbar>
         </AppBar>
-      </HideOnScroll>
+      </Slide>
       <Toolbar />
-      <Container>
-        <Box sx={{ my: 2 }}>
-          {[...new Array(12)]
-            .map(
-              () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-            )
-            .join('\n')}
-        </Box>
-      </Container>
     </>
   );
-
 };
 export default HideAppBar;
-

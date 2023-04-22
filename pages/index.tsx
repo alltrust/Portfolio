@@ -1,6 +1,7 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Navigation from '../components/ui/HideAppBar';
+import Container from '@mui/material/Container';
+import HideAppBar from '../components/ui/HideAppBar';
 
 const Home: NextPage = ({}) => {
 
@@ -41,14 +42,18 @@ const Home: NextPage = ({}) => {
   //*maybe private comments to projects
   //*maybe a blog sections of specific things ive learned
 
-  //
   return (
+    // <StyledPage>
     <>
+      <HideAppBar/>
 
-      <h1>
+      <Container color="red" maxWidth="md">
+        <h1>
       HELLOX
-      </h1>
+        </h1>
+      </Container>
     </>
+    // </StyledPage>
   );
 
 };

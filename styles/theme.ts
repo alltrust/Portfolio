@@ -1,46 +1,36 @@
-import { createTheme } from '@mui/material/styles';
+import { PaletteOptions, createTheme, css } from '@mui/material/styles';
 
-const coreTheme = {
-  typography: {
-    fontFamily: '\'Roboto\', sans-serif',
-  },
-  // Add more properties here as our app grows
-};
+export type AllowedTheme = NonNullable<PaletteOptions['mode']>;
 
-const theme = createTheme({
-  ...coreTheme,
+export const DEFAULT_THEME: AllowedTheme = 'dark';
+
+export const lightTheme = createTheme({
   palette: {
-    mode: 'dark',
-    primary: {
-      main: '#09015F',
-    },
-    secondary: {
-      main: '#F06292',
-    },
-  },
-  components: {
-    // Customize specific components
-  },
-  // Other theme options
-});
-
-const lightTheme = createTheme({
-  ...createTheme,
-  palette: {
+    primary: { main: '#9147FF' },
+    secondary: { main: '#2a48f3' },
     mode: 'light',
-    primary: {
-      main: '#007AFF',
-    },
-    secondary: {
-      main: '#FF3B30',
-    },
   },
-  components: {
-    // Customize specific components
-  },
-  // Other theme options
 });
 
-// Override theme for dark mode
+export const darkTheme = createTheme({
+  palette: {
+    primary: { main: '#9147FF' },
+    secondary: { main: '#2a48f3' },
+    mode: 'dark',
+  },
+});
 
-export { theme, lightTheme };
+export const globalStyles = css`
+  :root {
+    body {
+      background-color: #fff;
+      color: #121212;
+    }
+  }
+  [data-theme="dark"] {
+    body {
+      background-color: #121212;
+      color: #fff;
+    }
+  }
+`;
