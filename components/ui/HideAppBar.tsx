@@ -22,7 +22,6 @@ const HideAppBar = () => {
   if (!mounted)
     return (
       <div
-        // eslint-disable-next-line @emotion/jsx-import
         css={defaultStyle}
       ></div>
     );

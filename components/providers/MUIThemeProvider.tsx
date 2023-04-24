@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
 import { useTheme } from 'next-themes';
 import { darkTheme, lightTheme, globalStyles } from '../../styles/theme';
