@@ -1,10 +1,10 @@
-import React from 'react';
 import type { NextPage } from 'next';
+import HeroHeader from '../components/layout/HeroHeader';
+import Seperator from '../components/ui/ContentSeperator/Seperator';
 import Container from '@mui/material/Container';
-import HideAppBar from '../components/ui/HideAppBar';
+import Test from '../components/ui/NavigationAppBar/DELETEME'
 
 const Home: NextPage = ({}) => {
-
   //perhaps include a fullscreen modal/ overlay to welcome to page
   //dark theme and light theme mode and toggle
   //navigation to differnt page section
@@ -45,17 +45,16 @@ const Home: NextPage = ({}) => {
   return (
     // <StyledPage>
     <>
-      <HideAppBar/>
-
-      <Container color="red" maxWidth="md">
-        <h1>
-      HELLOX
-        </h1>
+      <Container
+        sx={{ height: '90vh', display: 'flex', alignItems: 'center' }}
+      >
+        <HeroHeader />
       </Container>
+      <Seperator />
+      <Test/>
     </>
     // </StyledPage>
   );
-
 };
 
 export default Home;

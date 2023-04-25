@@ -3,9 +3,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../lib/createEmotionCache';
 
 export default class MyDocument extends Document {
-
   render() {
-
     return (
       <Html lang="en">
         <Head>
@@ -26,15 +24,12 @@ export default class MyDocument extends Document {
         </body>
       </Html>
     );
-
   }
-
 }
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
 MyDocument.getInitialProps = async (ctx) => {
-
   // Resolution order
   //
   // On the server:
@@ -68,9 +63,7 @@ MyDocument.getInitialProps = async (ctx) => {
     originalRenderPage({
       enhanceApp: (App: any) =>
         function EnhanceApp(props) {
-
           return <App emotionCache={cache} {...props} />;
-
         },
     });
 
@@ -91,5 +84,4 @@ MyDocument.getInitialProps = async (ctx) => {
     ...initialProps,
     emotionStyleTags,
   };
-
 };
