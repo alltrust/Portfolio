@@ -1,26 +1,38 @@
 import { useState } from 'react';
+import { navLinks } from '../../../utils/navLinks';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 
 const NavTabs = () => {
-  const [value, setValue] = useState('home');
+  const router = useRouter();
+  const pathname = router.pathname;
+  const splitPath = pathname.split('/');
+
+  const [value, setValue] = useState(splitPath[1]);
 
   const handleTabChange = (el: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
-  //configure a way to use material ui with next Link
   return (
-      <Box>
-        <Tabs value={value} onChange={handleTabChange}>
-          <Tab value="home" label="Home" />
-          <Tab value="about" label="About" />
-          <Tab value="projects" label="Projects" />
-          <Tab value="contact" label="Contact" />
-          <Tab value="resume" label="resume" />
-        </Tabs>
-      </Box>
+    <Box>
+      <Tabs value={value} onChange={handleTabChange}>
+        {navLinks.map((navlink, idx) => {
+          return (
+            <Tab
+              key={idx}
+              value={navlink.name.toLowerCase()}
+              label={navlink.name}
+              href={navlink.link}
+              LinkComponent={NextLink}
+            />
+          );
+        })}
+      </Tabs>
+    </Box>
   );
 };
 
