@@ -1,4 +1,5 @@
 import HideAppBar from '../ui/NavigationAppBar/HideAppBar';
+import { AppProvider } from '../../context/provider';
 
 interface ILayout {
   children: React.ReactNode;
@@ -6,10 +7,10 @@ interface ILayout {
 
 const Layout = ({ children }: ILayout) => {
   return (
-    <>
+    <AppProvider>
       <HideAppBar />
       {children}
-    </>
+    </AppProvider>
   );
 };
 

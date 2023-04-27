@@ -4,7 +4,9 @@ export enum ITheme{
 }
 
 export interface IContextInitialState {
-    any: any
+    navPathname: string;
 }
 
-// export interface IAppValue IContextInitialState{}
+export interface IAppValue extends IContextInitialState{
+    handlePathname: ()=> void
+}

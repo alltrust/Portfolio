@@ -6,6 +6,8 @@ import ContactSection from "../components/sections/Contact"
 import FeaturedProjectsSection from '../components/sections/FeaturedProjects';
 import AboutSection from '../components/sections/About';
 import InfoSection from "../components/sections/Info"
+import Portal from "../components/ui/ContactModal/Portal";
+import ContactModal from '../components/ui/ContactModal';
 
 const Home: NextPage = ({}) => {
   //perhaps include a fullscreen modal/ overlay to welcome to page
@@ -54,6 +56,9 @@ const Home: NextPage = ({}) => {
       <AboutSection />
       <FeaturedProjectsSection />
       <ContactSection/>
+      {/* <Portal>
+        <ContactModal/>
+      </Portal> */}
       <Test />
     </>
     // </StyledPage>

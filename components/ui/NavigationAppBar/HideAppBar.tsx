@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import Logo from "../../layout/Logo"
 import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import MuiSwitch from '../MuiSwitch';
@@ -51,13 +52,14 @@ const HideAppBar = () => {
           <Toolbar>
             <Box sx={NavBarStyles}>
               <Box sx={{ marginRight: '3rem' }}>
-                <Typography
+                {/* <Typography
                   sx={{ color: (theme) => theme.palette.text.primary }}
                   variant="body2"
                   component="p"
                 >
                   Aldo Garcia
-                </Typography>
+                </Typography> */}
+                <Logo/>
                 <MuiSwitch onClick={toggleDarkMode} />
               </Box>
               <Box>
