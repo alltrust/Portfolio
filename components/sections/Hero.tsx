@@ -4,9 +4,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
-const HeroHeader = () => {
+const HeroSection = () => {
   return (
-    <Container maxWidth="xl">
+    <Container sx={{ height: '90vh', display: 'flex', alignItems: 'center' }}>
       <Grid container spacing={2}>
         <Grid container item xs={12} sm>
           <Grid
@@ -47,4 +47,4 @@ const HeroHeader = () => {
   );
 };
 
-export default HeroHeader;
+export default HeroSection;

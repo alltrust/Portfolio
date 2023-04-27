@@ -10,6 +10,7 @@ const NavTabs = () => {
     setValue(newValue);
   };
 
+  //configure a way to use material ui with next Link
   return (
       <Box>
         <Tabs value={value} onChange={handleTabChange}>

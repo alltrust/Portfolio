@@ -5,6 +5,24 @@ export type AllowedTheme = NonNullable<PaletteOptions['mode']>;
 
 export const DEFAULT_THEME: AllowedTheme = 'dark';
 
+
+// const commonCore = {
+//   spacing: {
+//     xs: 4,
+//     sm: 8,
+//     md: 16,
+//     lg: 24,
+//     xl: 32,
+//   },
+//   margins: {
+//     xs: 4,
+//     sm: 8,
+//     md: 16,
+//     lg: 24,
+//     xl: 32,
+//   },
+// };
+
 export const lightTheme = createTheme({
   palette: {
     primary: { main: '#9147FF' },
@@ -14,6 +32,7 @@ export const lightTheme = createTheme({
       secondary: grey[800],
     },
     mode: 'light',
+    // common: commonCore
   },
 });
 
@@ -26,6 +45,7 @@ export const darkTheme = createTheme({
       secondary: grey[400],
     },
     mode: 'dark',
+    // common: commonCore
   },
 });
 

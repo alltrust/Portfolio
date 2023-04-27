@@ -3,8 +3,7 @@ import type { AppProps } from 'next/app';
 import { EmotionCache } from '@emotion/react';
 
 import PageProvider from '../components/providers/PageProvider';
-import HideAppBar from '../components/ui/NavigationAppBar/HideAppBar';
-
+import Layout from '../components/layout/Layout';
 //try creating a HEAD component with attributes
 
 interface IAppProps extends AppProps {
@@ -16,8 +15,9 @@ function MyApp(props: IAppProps) {
 
   return (
     <PageProvider emotionCache={emotionCache}>
-      <HideAppBar />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </PageProvider>
   );
 }

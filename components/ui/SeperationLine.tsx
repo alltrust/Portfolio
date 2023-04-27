@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import StyledContainer from '../../StyledContainer';
+import StyledBox from './StyledBox';
 
-const Seperator = () => {
+const SeperatorLine = () => {
   const SeperationLine = styled.div`
     width: 100%;
     background-image: radial-gradient(circle, #46ee9a 0%, #b7e6f07b 100%);
@@ -10,10 +10,10 @@ const Seperator = () => {
   `;
 
   return (
-    <StyledContainer widthSize="xl">
+    <StyledBox widthSize="xl">
       <SeperationLine />
-    </StyledContainer>
+    </StyledBox>
   );
 };
 
-export default Seperator;
+export default SeperatorLine;

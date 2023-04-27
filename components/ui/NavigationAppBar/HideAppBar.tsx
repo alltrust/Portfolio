@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import MuiSwitch from '../MuiSwitch/MuiSwitch';
+import MuiSwitch from '../MuiSwitch';
 import Slide from '@mui/material/Slide';
 import { useTheme } from 'next-themes';
 import { Box, Theme } from '@mui/material';
@@ -50,12 +50,14 @@ const HideAppBar = () => {
         >
           <Toolbar>
             <Box sx={NavBarStyles}>
-              <Box sx={{marginRight: "3rem"}}>
+              <Box sx={{ marginRight: '3rem' }}>
                 <Typography
                   sx={{ color: (theme) => theme.palette.text.primary }}
                   variant="body2"
                   component="p"
-                ></Typography>
+                >
+                  Aldo Garcia
+                </Typography>
                 <MuiSwitch onClick={toggleDarkMode} />
               </Box>
               <Box>

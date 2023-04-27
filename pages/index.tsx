@@ -1,8 +1,11 @@
 import type { NextPage } from 'next';
-import HeroHeader from '../components/layout/HeroHeader';
-import Seperator from '../components/ui/ContentSeperator/Seperator';
-import Container from '@mui/material/Container';
-import Test from '../components/ui/NavigationAppBar/DELETEME'
+import HeroSection from '../components/sections/Hero';
+import SeperatorLine from '../components/ui/SeperationLine';
+import Test from '../components/ui/NavigationAppBar/DELETEME';
+import ContactSection from "../components/sections/Contact"
+import FeaturedProjectsSection from '../components/sections/FeaturedProjects';
+import AboutSection from '../components/sections/About';
+import InfoSection from "../components/sections/Info"
 
 const Home: NextPage = ({}) => {
   //perhaps include a fullscreen modal/ overlay to welcome to page
@@ -45,13 +48,13 @@ const Home: NextPage = ({}) => {
   return (
     // <StyledPage>
     <>
-      <Container
-        sx={{ height: '90vh', display: 'flex', alignItems: 'center' }}
-      >
-        <HeroHeader />
-      </Container>
-      <Seperator />
-      <Test/>
+      <HeroSection />
+      <SeperatorLine />
+      <InfoSection/>
+      <AboutSection />
+      <FeaturedProjectsSection />
+      <ContactSection/>
+      <Test />
     </>
     // </StyledPage>
   );
