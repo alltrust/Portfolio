@@ -6,6 +6,7 @@ interface ILayout {
 }
 
 const Layout = ({ children }: ILayout) => {
+  
   return (
     <AppProvider>
       <HideAppBar />

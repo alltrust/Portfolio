@@ -27,7 +27,7 @@ const DUMMYDATA: IProject[] = [
       'this is the beautiful dummy summary which summarizes the dummy title',
     content:
       'there is a bunch of content, like a blog, but not on the featured page i tell ya',
-    image: 'dummy-img',
+    image: '/images/image_dp.jpg',
     author: 'dummy-authot',
     dateCreated: 'dummy-date',
     isFeatured: true,
@@ -40,7 +40,7 @@ const DUMMYDATA: IProject[] = [
       'there is a bunch of content, like a blog, but not on the featured page i tell ya nuero 2.Now lets see how we wil imopliment the overlfow.THis is imoortant because we gfeneruiaer dont know and if we have to we must becuse lorem serm. ',
     content:
       'there is a bunch of content, like a blog, but not on the featured page i tell ya nuero 2.Now lets see how we wil imopliment the overlfow.THis is imoortant because we gfeneruiaer dont know and if we have to we must becuse lorem serm. ',
-    image: 'dummy-img2',
+    image: '/images/image_dp.jpg',
     author: 'dummy-authot2',
     dateCreated: 'dummy-date2',
     isFeatured: true,
@@ -53,7 +53,7 @@ const DUMMYDATA: IProject[] = [
       'this is the beautiful dummy summary which summarizes the dummy title for 3',
     content:
       'there is a bunch of content, like a blog, but not on the featured page i tell ya nuero 3',
-    image: 'dummy-img3',
+    image: '/images/image_dp.jpg',
     author: 'dummy-authot3',
     dateCreated: 'dummy-date3',
     isFeatured: false,
@@ -83,7 +83,7 @@ const FeaturedProjectsSection = () => {
           >
             <Grid item xs={5}>
               <Paper elevation={3}>
-                <Image src="" alt="" width={400} height={300} />
+                <Image src={project.image} alt="" width={400} height={300} />
               </Paper>
             </Grid>
             <Grid

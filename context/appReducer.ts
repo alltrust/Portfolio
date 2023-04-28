@@ -5,7 +5,13 @@ const reducer = (state: IState, action: IAction): IState => {
     case 'FOCUS_NAVLINK_PATH':
       return {
         ...state,
-        navPathname: action.payload || 'home',
+        navPathname: action.payload || 'home' ,
+      };
+
+    case 'NAV_TAB_CLICKED':
+      return {
+        ...state,
+        navTabClicked: action.payload,
       };
 
     default:

@@ -1,7 +1,21 @@
 {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5"
+  "printWidth": 80,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "function-spacing": {
+    "before": "never",
+    "after": "never"
+  },
+  "bracket-spacing": {
+    "before": true,
+    "after": true,
+    "overrides": {
+      "functionDeclaration": {
+        "before": false,
+        "after": false
+      }
+    }
+  }
 }
