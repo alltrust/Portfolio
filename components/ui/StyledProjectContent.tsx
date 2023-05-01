@@ -1,8 +1,9 @@
 import { styled } from '@mui/material/styles';
-import { IProject } from '../sections/FeaturedProjects';
+import { IProject } from '../../types/app/Iproject';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import StyledTechStack from './StyledTechStack';
+import LinksItem from '../sections/LinksItem';
 
 const StyledContentBox = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -20,12 +21,16 @@ interface IStyledProjectContent {
   title: IProject['title'];
   summary: IProject['summary'];
   stack: IProject['stack'];
+  slug: IProject['slug'];
+  links: IProject['links'];
 }
 
 const StyledProjectContent = ({
   title,
   summary,
   stack,
+  slug,
+  links,
 }: IStyledProjectContent) => {
   return (
     <StyledContentBox>
@@ -40,6 +45,7 @@ const StyledProjectContent = ({
         </Typography>
       </Box>
       <StyledTechStack stack={stack} />
+      <LinksItem slug={slug} links={links} />
     </StyledContentBox>
   );
 };

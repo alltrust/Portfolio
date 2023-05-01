@@ -4,12 +4,22 @@ import SeperatorLine from '../components/ui/SeperationLine';
 import Test from '../components/ui/NavigationAppBar/DELETEME';
 import ContactSection from "../components/sections/Contact"
 import FeaturedProjectsSection from '../components/sections/FeaturedProjects';
+import { IProject } from '../types/app/Iproject';
 import AboutSection from '../components/sections/About';
 import InfoSection from "../components/sections/Info"
 import Portal from "../components/ui/ContactModal/Portal";
 import ContactModal from '../components/ui/ContactModal';
+import { getFeaturedProjects } from '../lib/fetch-project';
 
-const Home: NextPage = ({}) => {
+interface IHomeProps {
+  featuredProjectData: IProject[]
+}
+
+
+const Home: NextPage<IHomeProps> = ({featuredProjectData}) => {
+//dispatch context to store the featuredProjectData in the 
+
+
   //perhaps include a fullscreen modal/ overlay to welcome to page
   //dark theme and light theme mode and toggle
   //navigation to differnt page section
@@ -54,7 +64,7 @@ const Home: NextPage = ({}) => {
       <SeperatorLine />
       <InfoSection/>
       <AboutSection />
-      <FeaturedProjectsSection />
+      <FeaturedProjectsSection featuredData={featuredProjectData} />
       <ContactSection/>
       {/* <Portal>
         <ContactModal/>
@@ -64,5 +74,20 @@ const Home: NextPage = ({}) => {
     // </StyledPage>
   );
 };
+
+
+export async function getStaticProps(){
+  //here we want to fetch projectData with isFeature === true;
+  //pass it as props to the home page for pre-rendering... pass it to the featuredProject section... or use context?
+  const featuredProjectData = getFeaturedProjects()
+
+  return{
+    props:{
+      featuredProjectData
+    },
+    revalidate: 1800,
+  }
+
+}
 
 export default Home;

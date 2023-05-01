@@ -1,4 +1,4 @@
-import { IState } from '../types/theme-actions';
+import { IState } from '../types/context/theme-actions';
 
 export const initialState: IState = {
   navPathname: 'home',

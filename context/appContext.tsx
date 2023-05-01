@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { IContextType } from '../types/theme-actions';
+import { IContextType } from '../types/context/theme-actions';
 
 const AppContext = createContext<IContextType>({} as IContextType);
 

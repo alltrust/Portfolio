@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Logo from "../../layout/Logo"
-import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import MuiSwitch from '../MuiSwitch';
 import Slide from '@mui/material/Slide';
@@ -52,13 +51,6 @@ const HideAppBar = () => {
           <Toolbar>
             <Box sx={NavBarStyles}>
               <Box sx={{ marginRight: '3rem' }}>
-                {/* <Typography
-                  sx={{ color: (theme) => theme.palette.text.primary }}
-                  variant="body2"
-                  component="p"
-                >
-                  Aldo Garcia
-                </Typography> */}
                 <Logo/>
                 <MuiSwitch onClick={toggleDarkMode} />
               </Box>

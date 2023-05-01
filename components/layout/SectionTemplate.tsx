@@ -12,7 +12,7 @@ const SectionTemplate = ({ heading, children }: ISectionTemplate) => {
   return (
     <>
       <Container>
-        <Box sx={{ marginBottom: '3rem' }}>
+        <Box sx={{ marginBottom: '3rem', marginTop: "3rem" }}>
           <Typography variant="h2" component="h2">
             {heading}
           </Typography>

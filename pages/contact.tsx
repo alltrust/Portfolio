@@ -1,4 +1,6 @@
-const ContactPage =()=>{
+import { NextPage } from "next/types";
+
+const ContactPage: NextPage =()=>{
     return(
         <></>
     )

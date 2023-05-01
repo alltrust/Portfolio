@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { NextPage } from 'next';
+import { NextPage } from 'next/types';
 
 const AboutPage: NextPage = ()=>{
 
