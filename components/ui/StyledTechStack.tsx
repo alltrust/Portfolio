@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { IProject } from '../sections/FeaturedProjects';
+import { IProject } from '../../types/app/Iproject';
 
 const StyledDiv = styled('div')(({ theme }) => ({
   display: 'flex',

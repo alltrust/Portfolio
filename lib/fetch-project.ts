@@ -5,6 +5,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import { IProject } from '../types/app/Iproject';
 
+//refactor
+
 const projectDirectory = path.join(process.cwd(), 'projects');
 
  export const removeFileExt = (fileName: string) => {

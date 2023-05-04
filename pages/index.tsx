@@ -1,14 +1,12 @@
 import type { NextPage } from 'next';
 import HeroSection from '../components/sections/Hero';
 import SeperatorLine from '../components/ui/SeperationLine';
-import Test from '../components/ui/NavigationAppBar/DELETEME';
+import Test from '../components/ui/navigation/DELETEME';
 import ContactSection from "../components/sections/Contact"
 import FeaturedProjectsSection from '../components/sections/FeaturedProjects';
 import { IProject } from '../types/app/Iproject';
 import AboutSection from '../components/sections/About';
 import InfoSection from "../components/sections/Info"
-import Portal from "../components/ui/ContactModal/Portal";
-import ContactModal from '../components/ui/ContactModal';
 import { getFeaturedProjects } from '../lib/fetch-project';
 
 interface IHomeProps {

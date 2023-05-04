@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Logo from "../../layout/Logo"
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import MuiSwitch from '../MuiSwitch';
+import MuiSwitch from '../mui-switch';
 import Slide from '@mui/material/Slide';
 import { useTheme } from 'next-themes';
 import { Box, Theme } from '@mui/material';

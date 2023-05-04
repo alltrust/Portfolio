@@ -16,7 +16,7 @@ const LinksItem = ({slug, links}:ILinkItem) => {
         <Link href={`/projects/${slug}`}>TO THIS PROJECT</Link>
         {links?.map((link)=>{
             return(
-                <Link target="_blank"  rel="noopener noreferrer" key={link} href={link}>eternal Link</Link>
+                <Link target="_blank"  rel="noopener noreferrer" key={link} href={link}>external Link</Link>
             )
         })}
     </Box>

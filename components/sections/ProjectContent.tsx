@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ProjectBanner from './ProjectBanner';
 import { IProject } from '../../types/app/Iproject';
+import MarkdownComponent from '../markdown-content';
 
 
 interface IProjectContent {
@@ -20,11 +21,7 @@ const ProjectContent = ({project}:IProjectContent) => {
         date={dateCreated}
       />
       <Box>
-        <Typography>
-          {content
-            ? content
-            : ' ..some content with subheading and content! think about: what this project does ..perhaps show a demo ..the stack, why decisions weremade project limitations; and how these limitations can be improved'}
-        </Typography>
+       <MarkdownComponent content={content}/>
       </Box>
     </Container>
   );

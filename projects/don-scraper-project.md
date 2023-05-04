@@ -10,4 +10,4 @@ stack: ['1', '2', '3', '4']
 
 # this is a title
 
-This is some regular text with a [link]
+This is some regular text with a [link](http://google.ca)

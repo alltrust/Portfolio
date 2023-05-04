@@ -1,4 +1,4 @@
-import HideAppBar from '../ui/NavigationAppBar/HideAppBar';
+import HideAppBar from '../ui/navigation/HideAppBar';
 import { AppProvider } from '../../context/provider';
 
 interface ILayout {

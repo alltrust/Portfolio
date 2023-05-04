@@ -12,7 +12,6 @@ interface ISingleProjectPageProps {
 }
 
 const SingleProjectPage: NextPage<ISingleProjectPageProps> = ({ project }) => {
-  console.log(project, "FROM SINGLE PROJECT")
 
   return (
     <>
