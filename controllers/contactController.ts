@@ -11,11 +11,11 @@ const createContactMessage = async (
     await contact.save();
 
     return res.status(200).json({
-      message: `Thanks for your submission, ${req.body.name}. Aldo will recieve your message shortly.`,
+      message: `Thanks for your submission, ${req.body.name}.`,
     });
   } catch (err) {
     return res.status(500).json({
-      error: { message: 'Could not create and send your message.', err: err },
+      error: 'Could not send your message at this time.',
     });
   }
 };

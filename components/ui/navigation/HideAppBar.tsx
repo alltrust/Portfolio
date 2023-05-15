@@ -2,13 +2,17 @@ import { css } from '@emotion/react';
 import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Logo from "../../layout/Logo"
+import Logo from '../../layout/Logo';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import MuiSwitch from '../mui-switch';
 import Slide from '@mui/material/Slide';
 import { useTheme } from 'next-themes';
 import { Box, Theme } from '@mui/material';
 import NavTabs from './NavTabs';
+import useAppContext from '../../../hooks/useAppContext';
+import ContactForm from '../../contact-form';
+import Portal from '../modal/Portal';
+import Modal from '../modal';
 
 const NavBarStyles = (theme: Theme) => ({
   display: 'flex',
@@ -19,6 +23,8 @@ const NavBarStyles = (theme: Theme) => ({
 });
 
 const HideAppBar = () => {
+  const { state } = useAppContext();
+
   const defaultStyle = css`
     min-height: 162.38px;
   `;
@@ -51,7 +57,7 @@ const HideAppBar = () => {
           <Toolbar>
             <Box sx={NavBarStyles}>
               <Box sx={{ marginRight: '3rem' }}>
-                <Logo/>
+                <Logo />
                 <MuiSwitch onClick={toggleDarkMode} />
               </Box>
               <Box>
@@ -62,6 +68,13 @@ const HideAppBar = () => {
         </AppBar>
       </Slide>
       <Toolbar />
+      {state.showModal ? (
+        <Portal>
+          <Modal>
+            <ContactForm />
+          </Modal>
+        </Portal>
+      ) : null}
     </>
   );
 };

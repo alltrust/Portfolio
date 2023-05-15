@@ -1,22 +1,21 @@
 import type { NextPage } from 'next';
 import HeroSection from '../components/sections/Hero';
 import SeperatorLine from '../components/ui/SeperationLine';
-import Test from '../components/ui/navigation/DELETEME';
-import ContactSection from "../components/sections/Contact"
 import FeaturedProjectsSection from '../components/sections/FeaturedProjects';
 import { IProject } from '../types/app/Iproject';
 import AboutSection from '../components/sections/About';
-import InfoSection from "../components/sections/Info"
+import InfoSection from '../components/sections/Info';
 import { getFeaturedProjects } from '../lib/fetch-project';
+import useAppContext from '../hooks/useAppContext';
 
 interface IHomeProps {
-  featuredProjectData: IProject[]
+  featuredProjectData: IProject[];
 }
 
-
-const Home: NextPage<IHomeProps> = ({featuredProjectData}) => {
-//dispatch context to store the featuredProjectData in the 
-
+const Home: NextPage<IHomeProps> = ({ featuredProjectData }) => {
+  const { state } = useAppContext();
+  console.log(state);
+  //dispatch context to store the featuredProjectData in the
 
   //perhaps include a fullscreen modal/ overlay to welcome to page
   //dark theme and light theme mode and toggle
@@ -56,36 +55,25 @@ const Home: NextPage<IHomeProps> = ({featuredProjectData}) => {
   //*maybe a blog sections of specific things ive learned
 
   return (
-    // <StyledPage>
     <>
       <HeroSection />
       <SeperatorLine />
-      <InfoSection/>
+      <InfoSection />
       <AboutSection />
       <FeaturedProjectsSection featuredData={featuredProjectData} />
-      <ContactSection/>
-      {/* <Portal>
-        <ContactModal/>
-      </Portal> */}
-      <Test />
     </>
-    // </StyledPage>
   );
 };
 
+export async function getStaticProps() {
+  const featuredProjectData = getFeaturedProjects();
 
-export async function getStaticProps(){
-  //here we want to fetch projectData with isFeature === true;
-  //pass it as props to the home page for pre-rendering... pass it to the featuredProject section... or use context?
-  const featuredProjectData = getFeaturedProjects()
-
-  return{
-    props:{
-      featuredProjectData
+  return {
+    props: {
+      featuredProjectData,
     },
     revalidate: 1800,
-  }
-
+  };
 }
 
 export default Home;

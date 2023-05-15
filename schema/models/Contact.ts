@@ -1,5 +1,5 @@
 import mongoose, { Document } from 'mongoose';
-import { IContactValues } from '../contact';
+import { IContactValues } from '../validation/contact';
 
 const ContactMessageSchema = new mongoose.Schema<IContactValues>({
   name: String,
@@ -10,7 +10,7 @@ const ContactMessageSchema = new mongoose.Schema<IContactValues>({
 interface IContactModel extends IContactValues, Document {}
 
 const ContactMessage = mongoose.model<IContactModel>(
-  'Contact',
+  'ContactMessage',
   ContactMessageSchema
 );
 

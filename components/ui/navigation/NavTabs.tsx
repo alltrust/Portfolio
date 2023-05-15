@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { MouseEventHandler, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
@@ -11,15 +11,20 @@ import { splitPathname } from '../../../utils/splitPathname';
 const NavTabs = () => {
   const { state, dispatch } = useAppContext();
   //perhaps i can pass via SSR and set the state.pathname early
+  const { navPathname, navTabClicked } = state;
   const router = useRouter();
 
   const pathname = splitPathname(router);
 
+  const handleModalOn: MouseEventHandler<HTMLDivElement> = () => {
+    dispatch({ type: 'SHOW_MODAL', payload: true });
+  };
+
   useEffect(() => {
-    if (!state.navTabClicked) {
+    if (!navTabClicked) {
       dispatch({ type: 'FOCUS_NAVLINK_PATH', payload: pathname });
     }
-  }, [dispatch, pathname, state.navPathname, state.navTabClicked]);
+  }, [dispatch, pathname, navPathname, navTabClicked]);
 
   const handleTabChange = (el: React.SyntheticEvent, newValue: string) => {
     dispatch({ type: 'FOCUS_NAVLINK_PATH', payload: newValue || 'home' });
@@ -30,13 +35,17 @@ const NavTabs = () => {
     <Box>
       <Tabs value={state.navPathname} onChange={handleTabChange}>
         {navLinks.map((navlink, idx) => {
+          const { value, name, link } = navlink;
+          const Component = link ? NextLink : 'button';
+          const componentProps = link ? { href: link } : {};
           return (
             <Tab
               key={idx}
-              value={navlink.value || navlink.name.toLowerCase()}
-              label={navlink.name}
-              href={navlink.link}
-              LinkComponent={NextLink}
+              value={value || name.toLowerCase()}
+              label={name}
+              LinkComponent={Component}
+              {...componentProps}
+              onClick={name === 'Contact' ? handleModalOn : undefined}
             />
           );
         })}

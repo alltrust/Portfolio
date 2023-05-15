@@ -1,6 +1,7 @@
 import { useEffect, useState, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
+//perhaps import state and is !showModal
 interface IPortal {
   children: ReactNode;
 }
@@ -14,13 +15,9 @@ const Portal = ({ children }: IPortal) => {
     return () => setMounted(false);
   }, []);
 
-  const portal = document.querySelector('#portal');
+  const portal = document.getElementById('portal') as HTMLElement;
 
-  if (portal) {
-    return mounted ? createPortal(children, portal) : null;
-  }
-  return
-  <></>
+  return mounted ? createPortal(children, portal) : null;
 };
 
 export default Portal;

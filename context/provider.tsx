@@ -1,8 +1,10 @@
 import { useReducer, ReactNode } from 'react';
+import {useRouter} from 'next/router'
 import { initialState } from './appInitialState';
 import reducer from './appReducer';
 import AppContext from './appContext';
 import { IContextType } from '../types/context/theme-actions';
+import { splitPathname } from '../utils/splitPathname';
 
 interface IAppProviderProps {
   children: ReactNode;
@@ -12,8 +14,21 @@ interface IAppProviderProps {
 export const AppProvider = ({ children, value }: IAppProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const router = useRouter();
+  const pathname = splitPathname(router);
+
+  const handleModalClose = () => {
+    dispatch({ type: 'SHOW_MODAL', payload: false });
+    dispatch({ type: 'FOCUS_NAVLINK_PATH', payload: pathname });
+  };
+
+  const stateFns = {
+    handleModalClose
+  }
+
+
   return (
-    <AppContext.Provider value={value || { state, dispatch }}>
+    <AppContext.Provider value={value || { state, dispatch, stateFns }}>
       {children}
     </AppContext.Provider>
   );

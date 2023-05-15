@@ -7,23 +7,26 @@ const reducer = (state: IState, action: IAction): IState => {
         ...state,
         navPathname: action.payload || 'home',
       };
-
     case 'NAV_TAB_CLICKED':
       return {
         ...state,
         navTabClicked: action.payload,
       };
-    // case 'LOADING':
-    //   return {
-    //     ...state,
-    //     isLoading: true,
-    //   };
-    case 'FETCH_FEATURED_PROJECTS':
+    case 'LOADING':
       return {
         ...state,
-        featuredProjects: action.payload || [],
+        isLoading: true,
       };
-
+    case 'ALERT':
+      return {
+        ...state,
+        alert: action.payload,
+      };
+    case 'SHOW_MODAL':
+      return {
+        ...state,
+        showModal: action.payload,
+      };
     default:
       return state;
   }

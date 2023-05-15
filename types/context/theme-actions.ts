@@ -1,12 +1,15 @@
-import { IProject } from '../app/Iproject';
+import { AlertColor } from '@mui/material/Alert';
 
 export interface IState {
   navPathname: string;
   navTabClicked: boolean;
-  // isLoading: boolean;
-  featuredProjects: IProject[];
-  allProjects: IProject[];
-  singleProject: IProject;
+  isLoading: boolean;
+  alert: {
+    display: boolean;
+    message?: string;
+    variant?: AlertColor | undefined;
+  };
+  showModal: boolean;
 }
 
 interface INavPathname {
@@ -19,36 +22,39 @@ interface INavTabClicked {
   payload: IState['navTabClicked'];
 }
 
-// interface IIsLoading {
-//   type: 'LOADING';
-//   payload: IState['isLoading'];
-// }
-
-interface IFeaturedProjects {
-  type: 'FETCH_FEATURED_PROJECTS';
-  payload: IState['featuredProjects'];
+interface IIsLoading {
+  type: 'LOADING';
+  payload: IState['isLoading'];
 }
 
-interface IAllProjects {
-  type: 'FETCH_ALL_PROJECTS';
-  payload: IState['allProjects'];
+interface IAlert {
+  type: 'ALERT';
+  payload: IState['alert'];
 }
 
-interface ISingleProject {
-  type: 'FETCH_SINGLE_PROJECT';
-  payload: IState['singleProject'];
+interface IShowModal {
+  type: 'SHOW_MODAL';
+  payload: IState['showModal'];
 }
 
 export type IAction =
   | INavPathname
   | INavTabClicked
-  | IFeaturedProjects
-  | IAllProjects
-  | ISingleProject;
+  | IIsLoading
+  | IAlert
+  | IShowModal;
 
 export type IDispatch = (action: IAction) => void;
+
+interface IContextActions {
+  handleModalClose: ()=> void
+}
+
+
 
 export type IContextType = {
   state: IState;
   dispatch: IDispatch;
+  stateFns: IContextActions
+
 };
