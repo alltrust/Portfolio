@@ -56,8 +56,10 @@ const MarkdownComponent = ({ content }: IMarkdownComponent) => {
           }
           return <Typography variant="body1">{paragraph.children}</Typography>;
         },
+
         code: ({ node, inline, className, children, ...props }) => {
           const match = /language-(\w+)/.exec(className || '');
+
           return !inline && match ? (
             <SyntaxHighlighter
               language={match[1]}

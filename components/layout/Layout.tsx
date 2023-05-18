@@ -7,7 +7,7 @@ interface ILayout {
 }
 
 const Layout = ({ children }: ILayout) => {
-  // console.log
+  
   return (
     <AppProvider>
       <HideAppBar />

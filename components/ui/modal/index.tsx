@@ -1,8 +1,6 @@
 import useAppContext from '../../../hooks/useAppContext';
-import { useRouter } from 'next/router';
 import Container from '@mui/material/Container';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 
 interface IModal {
@@ -11,11 +9,12 @@ interface IModal {
 
 const Modal = ({ children }: IModal) => {
   const { state, stateFns } = useAppContext();
+  const {showModal} = state
+  const {handleModalClose} = stateFns
 
   return (
     <Container>
-      <Dialog open={state.showModal} onClose={stateFns.handleModalClose}>
-        <DialogTitle>Contact</DialogTitle>
+      <Dialog open={showModal} onClose={handleModalClose}>
         <DialogContent>{children}</DialogContent>
       </Dialog>
     </Container>

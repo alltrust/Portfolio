@@ -7,6 +7,7 @@ import AboutSection from '../components/sections/About';
 import InfoSection from '../components/sections/Info';
 import { getFeaturedProjects } from '../lib/fetch-project';
 import useAppContext from '../hooks/useAppContext';
+import NullDataDisplay from '../components/ui/NullDataDisplay';
 
 interface IHomeProps {
   featuredProjectData: IProject[];
@@ -60,7 +61,11 @@ const Home: NextPage<IHomeProps> = ({ featuredProjectData }) => {
       <SeperatorLine />
       <InfoSection />
       <AboutSection />
-      <FeaturedProjectsSection featuredData={featuredProjectData} />
+      {featuredProjectData ? (
+        <FeaturedProjectsSection featuredData={featuredProjectData} />
+      ) : (
+        <NullDataDisplay />
+      )}
     </>
   );
 };

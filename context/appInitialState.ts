@@ -5,5 +5,6 @@ export const initialState: IState = {
   navTabClicked: false,
   isLoading: false,
   alert: { display: false },
-  showModal: false
+  showModal: false,
+  toggleDrawer: false,
 };

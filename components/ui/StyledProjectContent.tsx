@@ -8,11 +8,9 @@ import LinksItem from '../sections/LinksItem';
 const StyledContentBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  background: theme.palette.secondary.main,
   color: theme.palette.text.primary,
 
   '& > div:nth-of-type(2)': {
-    marginTop: '2rem',
     marginBottom: '1rem',
   },
 }));

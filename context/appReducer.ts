@@ -27,6 +27,11 @@ const reducer = (state: IState, action: IAction): IState => {
         ...state,
         showModal: action.payload,
       };
+    case 'TOGGLE_DRAWER':
+      return {
+        ...state,
+        toggleDrawer: action.payload,
+      };
     default:
       return state;
   }

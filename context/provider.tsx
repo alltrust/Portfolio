@@ -1,5 +1,5 @@
 import { useReducer, ReactNode } from 'react';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router';
 import { initialState } from './appInitialState';
 import reducer from './appReducer';
 import AppContext from './appContext';
@@ -22,10 +22,19 @@ export const AppProvider = ({ children, value }: IAppProviderProps) => {
     dispatch({ type: 'FOCUS_NAVLINK_PATH', payload: pathname });
   };
 
-  const stateFns = {
-    handleModalClose
-  }
+  const handleModalOpen = () => {
+    dispatch({ type: 'SHOW_MODAL', payload: true });
+  };
 
+  const handleToggleDrawer = () => {
+    dispatch({ type: 'TOGGLE_DRAWER', payload: !state.toggleDrawer });
+  };
+
+  const stateFns = {
+    handleModalClose,
+    handleModalOpen,
+    handleToggleDrawer,
+  };
 
   return (
     <AppContext.Provider value={value || { state, dispatch, stateFns }}>

@@ -10,6 +10,7 @@ export interface IState {
     variant?: AlertColor | undefined;
   };
   showModal: boolean;
+  toggleDrawer: boolean;
 }
 
 interface INavPathname {
@@ -27,6 +28,11 @@ interface IIsLoading {
   payload: IState['isLoading'];
 }
 
+interface IToggleDrawer {
+  type: 'TOGGLE_DRAWER';
+  payload: IState['toggleDrawer'];
+}
+
 interface IAlert {
   type: 'ALERT';
   payload: IState['alert'];
@@ -42,19 +48,19 @@ export type IAction =
   | INavTabClicked
   | IIsLoading
   | IAlert
-  | IShowModal;
+  | IShowModal
+  | IToggleDrawer;
 
 export type IDispatch = (action: IAction) => void;
 
 interface IContextActions {
-  handleModalClose: ()=> void
+  handleModalClose: () => void;
+  handleModalOpen: ()=> void;
+  handleToggleDrawer: ()=> void;
 }
-
-
 
 export type IContextType = {
   state: IState;
   dispatch: IDispatch;
-  stateFns: IContextActions
-
+  stateFns: IContextActions;
 };

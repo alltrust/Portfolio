@@ -22,4 +22,14 @@ function printBasics() {
 printBasics();
 ```
 
+```js
+const basic = 'Okay, that should not be too difficult actually';
+
+function printBasic() {
+  console.log(basic):
+}
+
+printBasic();
+```
+
 Learn more about it [here](https://academind.com).

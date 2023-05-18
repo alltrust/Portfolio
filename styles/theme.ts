@@ -1,27 +1,11 @@
 import { grey } from '@mui/material/colors';
+import { Shadows } from '@mui/material';
 import { PaletteOptions, createTheme, css } from '@mui/material/styles';
 
 export type AllowedTheme = NonNullable<PaletteOptions['mode']>;
 
 export const DEFAULT_THEME: AllowedTheme = 'dark';
 
-
-// const commonCore = {
-//   spacing: {
-//     xs: 4,
-//     sm: 8,
-//     md: 16,
-//     lg: 24,
-//     xl: 32,
-//   },
-//   margins: {
-//     xs: 4,
-//     sm: 8,
-//     md: 16,
-//     lg: 24,
-//     xl: 32,
-//   },
-// };
 
 export const lightTheme = createTheme({
   palette: {
@@ -32,8 +16,13 @@ export const lightTheme = createTheme({
       secondary: grey[800],
     },
     mode: 'light',
-    // common: commonCore
   },
+  // shadows: [
+  //   'none',
+  //   'rgb(48 44 44 / 26%) 6px 6px 5px',
+  //   // Add the remaining shadow values here
+  //   ...Array(23).fill('none'),
+  // ] as Shadows,
 });
 
 export const darkTheme = createTheme({
@@ -47,6 +36,11 @@ export const darkTheme = createTheme({
     mode: 'dark',
     // common: commonCore
   },
+  // shadows: [
+  //   'none',
+  //   '0px 2px 4px rgba(0, 0, 0, 0.1)',
+  //   ...Array(23).fill('none'),
+  // ] as Shadows,
 });
 
 export const globalStyles = css`

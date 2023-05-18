@@ -15,14 +15,11 @@ const postMessageRequest = async ({ values }: IPostMessageParams) => {
     },
   });
 
-  const data = await response.json();
-
   if (!response.ok) {
-    const errorMsg = data.error;
-
-    return { errorMsg };
+    throw new Error('Unable to submit your message');
   }
 
+  const data = await response.json();
   return { data };
 };
 

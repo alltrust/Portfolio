@@ -34,7 +34,7 @@ In this article, we'll dive into the core concepts and features NextJS has to of
 
 ... More content ...
 
-```javascript
+```js
 const basics = "Okay this is basic"
 
 const printFn = (basics)=>{
@@ -42,4 +42,9 @@ const printFn = (basics)=>{
 };
 
 printFn()
+```
+```js
+const some = "Okay this is basic"
+
+console.log(some)
 ```

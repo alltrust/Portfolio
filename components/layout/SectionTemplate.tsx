@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Seperator from '../ui/SeperationLine';
+import { useInView } from 'react-intersection-observer';
 
 interface ISectionTemplate {
   heading: string;
@@ -9,18 +9,32 @@ interface ISectionTemplate {
 }
 
 const SectionTemplate = ({ heading, children }: ISectionTemplate) => {
+  const [sectionRef, inView] = useInView({
+    // triggerOnce: true,
+    threshold: 0.2,
+  });
+
   return (
-    <>
-      <Container>
-        <Box sx={{ marginBottom: '3rem', marginTop: "3rem" }}>
-          <Typography variant="h2" component="h2">
-            {heading}
-          </Typography>
-        </Box>
-        {children}
-      </Container>
+    <Box
+      ref={sectionRef}
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        opacity: inView ? 1 : 0,
+        transition: 'opacity 0.5s ease-in-out',
+      }}
+    >
+      <Box sx={{ marginBottom: '3rem', marginTop: '3rem' }}>
+        <Typography variant="h2" component="h2">
+          {heading}
+        </Typography>
+      </Box>
+      {children}
       <Seperator />
-    </>
+    </Box>
   );
 };
 
