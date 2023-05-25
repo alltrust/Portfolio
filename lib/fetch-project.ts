@@ -36,6 +36,7 @@ const getProjectData = (fileName: string) => {
     isFeatured: data.isFeatured,
     stack: data.stack,
     content: content,
+    subHeading: data.subHeading
   };
 
   return projectData;

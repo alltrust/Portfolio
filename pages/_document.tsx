@@ -2,6 +2,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../lib/createEmotionCache';
 
+
 export default class MyDocument extends Document {
   render() {
     return (
@@ -15,6 +16,17 @@ export default class MyDocument extends Document {
             rel="preload"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <style>{`
+            /* latin */
+            @font-face {
+              font-family: 'Roboto Mono';
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+              src: local('Roboto Mono'), local('RobotoMono-Regular'), url(https://fonts.gstatic.com/s/robotomono/v10/L0x5DF4xlVMF-BfR8bXMIjhLq38.woff2) format('woff2');
+              unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+          `}</style>
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}
         </Head>

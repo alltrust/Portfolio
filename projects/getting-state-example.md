@@ -2,6 +2,7 @@
 title: 'Some example to see if she works'
 dateCreated: '2023-05-01'
 image: 'image_dp.jpg'
+subHeading: 'Scrape article content several sites'
 summary: 'this is like an excerpt for a summary and suc and this is the neeww h'
 author: 'Aldo Garcia'
 isFeatured: true

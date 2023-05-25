@@ -1,7 +1,8 @@
 ---
 title: 'Campground App'
 dateCreated: '2023-05-01'
-image: 'image_dp.jpg'
+image: 'yelp-campground-project.PNG'
+subHeading: 'Every campground is an adventure'
 summary: 'Like a yelp Camground app where you can map out a campground with images, description and location. Login and register a campground, or review someone elses!'
 author: 'Aldo Garcia'
 isFeatured: true

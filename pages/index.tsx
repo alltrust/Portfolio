@@ -15,7 +15,6 @@ interface IHomeProps {
 
 const Home: NextPage<IHomeProps> = ({ featuredProjectData }) => {
   const { state } = useAppContext();
-  console.log(state);
   //dispatch context to store the featuredProjectData in the
 
   //perhaps include a fullscreen modal/ overlay to welcome to page
@@ -31,7 +30,7 @@ const Home: NextPage<IHomeProps> = ({ featuredProjectData }) => {
   //links
 
   //include an AppBar
-  //get a font for typography
+  //get a font for typography 
 
   //mainHeader component with
   //title
@@ -82,3 +81,4 @@ export async function getStaticProps() {
 }
 
 export default Home;
+ 

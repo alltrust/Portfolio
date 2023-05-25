@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 interface IMarkdownComponent {
   content: string;
@@ -65,7 +65,7 @@ const MarkdownComponent = ({ content }: IMarkdownComponent) => {
               language={match[1]}
               PreTag="div"
               {...props}
-              style={dracula}
+              style={tomorrow}
             >
               {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>

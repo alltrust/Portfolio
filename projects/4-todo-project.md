@@ -1,14 +1,13 @@
 ---
-title: 'The infamous To-do App'
+title: 'Infamous Todo App'
 dateCreated: '2023-05-01'
-image: 'image_dp.jpg'
-summary: 'What would a web developer's journey be without the handy to do app- without it you wouldn't know what to do... '
+image: 'todo-project.PNG'
+subHeading: 'Simple todo application to start a good journey'
+summary: 'What would a joruney be without the handy todo app, without it you wouldnt know what todo'
 author: 'Aldo Garcia'
 isFeatured: true
-stack: ['JavaSript', 'Firebase', 'React', 'Redux']
+stack: ['JavaScript', 'Firebase', 'React', 'Redux']
 ---
-
-# this is a title
 
 This is some regular text with a [link]
 
@@ -21,14 +20,13 @@ function App() {
     dispatch(getReminderData());
   }, [dispatch]);
 
-
   useEffect(() => {
     if (isInitialLoad) {
       isInitialLoad = false;
       return;
     }
-    dispatch(sendReminderData(reminders))
-  }, [ dispatch,reminders]);
+    dispatch(sendReminderData(reminders));
+  }, [dispatch, reminders]);
 
   return (
     <div className="App">
@@ -41,7 +39,7 @@ function App() {
 
 ```js
 const reminderSlice = createSlice({
-  name: "reminders",
+  name: 'reminders',
   initialState: {
     reminders: DUMMY_DATA,
     filterInput: null,
@@ -66,7 +64,7 @@ const reminderSlice = createSlice({
           notes: action.payload.notes,
           name: action.payload.name,
           priority: action.payload.priority,
-          dueDate: action.payload.dueDate 
+          dueDate: action.payload.dueDate,
         };
         updatedList[reminderIndex] = updateReminder;
       }

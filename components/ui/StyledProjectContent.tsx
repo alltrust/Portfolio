@@ -1,14 +1,16 @@
 import { styled } from '@mui/material/styles';
 import { IProject } from '../../types/app/Iproject';
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import StyledTechStack from './StyledTechStack';
 import LinksItem from '../sections/LinksItem';
 
-const StyledContentBox = styled(Box)(({ theme }) => ({
+const StyledContentPaper = styled(Paper)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   color: theme.palette.text.primary,
+  padding: '2%',
+  backgroundColor: theme.palette.mode !== 'dark' ? '#d1d1f5' : '#18181a',
 
   '& > div:nth-of-type(2)': {
     marginBottom: '1rem',
@@ -16,7 +18,7 @@ const StyledContentBox = styled(Box)(({ theme }) => ({
 }));
 
 interface IStyledProjectContent {
-  title: IProject['title'];
+  subHeading: IProject['subHeading'];
   summary: IProject['summary'];
   stack: IProject['stack'];
   slug: IProject['slug'];
@@ -24,27 +26,28 @@ interface IStyledProjectContent {
 }
 
 const StyledProjectContent = ({
-  title,
   summary,
   stack,
   slug,
   links,
+  subHeading,
 }: IStyledProjectContent) => {
   return (
-    <StyledContentBox>
-      <Box>
-        <Typography variant="h3" component="h3">
-          {title}
-        </Typography>
-      </Box>
-      <Box>
-        <Typography variant="body1" component="p">
-          {summary}
-        </Typography>
-      </Box>
-      <StyledTechStack stack={stack} />
-      <LinksItem slug={slug} links={links} />
-    </StyledContentBox>
+    <>
+      <StyledContentPaper elevation={3}>
+        <Box>
+          <Typography variant="h5" component="h5">
+            {subHeading}
+          </Typography>
+        </Box>
+        <Box>
+          <Typography variant="body2" component="p">
+            {summary}
+          </Typography>
+        </Box>
+        <LinksItem slug={slug} links={links} />
+      </StyledContentPaper>
+    </>
   );
 };
 

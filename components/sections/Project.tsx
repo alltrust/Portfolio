@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTheme, useMediaQuery, styled } from '@mui/material';
+import { useTheme, useMediaQuery, styled, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
@@ -10,6 +10,10 @@ import { useInView } from 'react-intersection-observer';
 import CodeSnippet from '../code-snippet';
 import Collapse from '@mui/material/Collapse';
 import CodeIcon from '@mui/icons-material/Code';
+import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
+import StyledTechStack from '../ui/StyledTechStack';
+import NextLink from 'next/link';
 
 interface IProjectProps {
   project: IProject;
@@ -17,27 +21,30 @@ interface IProjectProps {
 
 const StyledCodeButton = styled(Button)`
   &:hover {
-    background-color: #ccc; // set to the grey color you want
+    background-color: #e9e0ec;
     transition: background-color 0.3s ease-in-out;
   }
 `;
 
-const Project = ({ project }: IProjectProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const { title, image, links, slug, stack, summary, content } = project;
+const StyledImageOverlay = styled(Box)`
+  background-color: rgba(255, 0, 0, 0.55);
+  opacity: 0.5;
+`;
 
-  const handleToggleExpanded = (el: any) => {
-    console.log(el);
+const Project = ({ project }: IProjectProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const { image, links, slug, stack, summary, content, subHeading, title } =
+    project;
+
+  const handleToggleExpanded = () => {
     setIsExpanded((prevState) => !prevState);
   };
 
-  // const getCodeSnippet = useMemo(() => {
   const regex = /```js[\s\S]*?```/g;
   const codeSnippets = content.match(regex);
-  console.log(codeSnippets);
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [imageRef, imageInView] = useInView({
     triggerOnce: true,
@@ -50,77 +57,104 @@ const Project = ({ project }: IProjectProps) => {
   });
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: isMobile ? 'column' : 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+    <Container maxWidth="md">
+      <Box sx={{ marginBottom: '1rem', textAlign: 'center' }}>
+        <Typography
+          variant={isMobile ? 'h6' : 'h3'}
+          component={isMobile ? 'h6' : 'h3'}
+        >
+          {title}
+        </Typography>
+
+        {!isMobile ? (
+          <>
+            <StyledTechStack stack={stack} />
+          </>
+        ) : null}
+      </Box>
       <Box
-        ref={imageRef}
         sx={{
-          width: isMobile ? '100%' : 'inherit',
-          marginBottom: isMobile ? '2rem' : 0,
-          opacity: imageInView ? 1 : 0,
-          transition: 'opacity 0.6s ease-in-out, transform 0.6s ease-in-out',
-          textAlign: 'center',
-          marginRight: isMobile ?  'inherit' : '1%',
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <Image
-          src={`/images/projects/${image}`}
-          alt=""
-          width={500}
-          height={400}
-          style={{
-            objectFit: 'cover',
-            boxShadow: theme.shadows[10],
-            borderRadius: '2%',
+        <Box
+          ref={imageRef}
+          sx={{
+            width: isMobile ? '100%' : 'inherit',
+            marginBottom: isMobile ? '2rem' : 0,
+            opacity: imageInView ? 1 : 0,
+            transition: 'opacity 0.6s ease-in-out, transform 0.6s ease-in-out',
+            textAlign: 'center',
+            marginRight: isMobile ? '' : '1%',
           }}
-        />
-      </Box>
-      <Box sx={{ width: '40%' }}>
-        {!isMobile && codeSnippets ? (
-          <Box>
-            <Collapse in={isExpanded} collapsedSize={200}>
-              <CodeSnippet selectedSnippet={codeSnippets[0]} />
-            </Collapse>
-            <StyledCodeButton onClick={handleToggleExpanded}>
-              <CodeIcon />
-            </StyledCodeButton>
-          </Box>
-        ) : null}
-        <Slide
-          in={isMobile ? imageInView : contentInView}
-          direction="right"
-          timeout={{ enter: 1000 }}
         >
-          <Box
-            ref={contentRef}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-evenly',
-              width: isMobile ? '95%' : '100%',
-              opacity: contentInView ? 1 : 0,
-              transition:
-                'opacity 0.6s ease-in-out, transform 0.6s ease-in-out',
-              padding: '2%',
-            }}
+          <NextLink href={`/projects/${slug}`}>
+            <StyledImageOverlay>
+              <Image
+                src={`/images/projects/${image}`}
+                alt={`${image}`}
+                width={!isMobile ? 500 : 350}
+                height={!isMobile ? 375 : 250}
+                style={{
+                  objectFit: 'cover',
+                  boxShadow: theme.shadows[8],
+                  borderRadius: '2%',
+                }}
+              />
+            </StyledImageOverlay>
+          </NextLink>
+        </Box>
+        <Box sx={{ width: isMobile ? '100%' : '50%' }}>
+          {!isMobile && codeSnippets ? (
+            <Paper
+              elevation={3}
+              sx={{
+                borderRadius: '5px',
+                marginBottom: '2%',
+                backgroundColor:
+                  theme.palette.mode !== 'dark' ? '#b4f0db' : '#680cf1',
+              }}
+            >
+              <Collapse in={isExpanded} collapsedSize={200}>
+                <CodeSnippet selectedSnippet={codeSnippets[0]} />
+              </Collapse>
+              <StyledCodeButton onClick={handleToggleExpanded}>
+                <CodeIcon sx={{ color: theme.palette.secondary.dark }} />
+              </StyledCodeButton>
+            </Paper>
+          ) : null}
+          <Slide
+            in={isMobile ? imageInView : contentInView}
+            direction="right"
+            timeout={{ enter: 1000 }}
           >
-            <StyledProjectContent
-              title={title}
-              summary={summary}
-              stack={stack}
-              slug={slug}
-              links={links}
-            />
-          </Box>
-        </Slide>
+            <Box
+              ref={contentRef}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-evenly',
+                width: isMobile ? '95%' : '100%',
+                opacity: contentInView ? 1 : 0,
+                transition:
+                  'opacity 0.6s ease-in-out, transform 0.6s ease-in-out',
+              }}
+            >
+              <StyledProjectContent
+                summary={summary}
+                stack={stack}
+                slug={slug}
+                links={links}
+                subHeading={subHeading}
+              />
+            </Box>
+          </Slide>
+        </Box>
       </Box>
-    </Box>
+    </Container>
   );
 };
 

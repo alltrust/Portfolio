@@ -48,7 +48,7 @@ const HideAppBar = () => {
             backgroundColor:
               theme === 'dark'
                 ? 'rgba(0, 0, 49,0.9)'
-                : 'rgba(255, 255, 255, 0.9)',
+                : 'rgba(227, 237, 241, 0.9)',
             display: 'flex',
             alignItems: 'flex-end',
           }}

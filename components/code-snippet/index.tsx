@@ -5,7 +5,6 @@ interface ICodeSnippet {
 }
 
 const CodeSnippet = ({selectedSnippet}:ICodeSnippet)=>{
-    //run a fn to select the code snippet from content to display
     return(
         <>
         <MarkdownComponent content={selectedSnippet}/>

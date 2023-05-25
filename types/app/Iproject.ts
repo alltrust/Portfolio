@@ -8,6 +8,7 @@ export interface IProject {
     dateCreated: string;
     isFeatured: boolean;
     stack: string[];
+    subHeading: string;
     codeExample?: string;
     codeExampleExplanation?: string;
     links?: string[];

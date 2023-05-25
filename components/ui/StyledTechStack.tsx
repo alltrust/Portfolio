@@ -5,7 +5,8 @@ import { IProject } from '../../types/app/Iproject';
 const StyledDiv = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-around',
-  color: theme.palette.text.primary,
+  color: theme.palette.secondary.contrastText,
+  width: '100%',
 }));
 
 interface IStyledTechStackBox {

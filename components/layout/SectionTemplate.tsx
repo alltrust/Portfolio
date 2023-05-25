@@ -4,15 +4,17 @@ import Seperator from '../ui/SeperationLine';
 import { useInView } from 'react-intersection-observer';
 
 interface ISectionTemplate {
-  heading: string;
+  heading?: string;
   children: React.ReactNode;
 }
 
 const SectionTemplate = ({ heading, children }: ISectionTemplate) => {
+
   const [sectionRef, inView] = useInView({
-    // triggerOnce: true,
     threshold: 0.2,
   });
+
+
 
   return (
     <Box
@@ -27,11 +29,13 @@ const SectionTemplate = ({ heading, children }: ISectionTemplate) => {
         transition: 'opacity 0.5s ease-in-out',
       }}
     >
-      <Box sx={{ marginBottom: '3rem', marginTop: '3rem' }}>
-        <Typography variant="h2" component="h2">
-          {heading}
-        </Typography>
-      </Box>
+      {heading ? (
+        <Box sx={{ marginBottom: '3rem', marginTop: '3rem' }}>
+          <Typography variant="h2" component="h2">
+            {heading}
+          </Typography>
+        </Box>
+      ) : null}
       {children}
       <Seperator />
     </Box>
