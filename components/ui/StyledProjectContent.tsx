@@ -11,6 +11,7 @@ const StyledContentPaper = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.primary,
   padding: '2%',
   backgroundColor: theme.palette.mode !== 'dark' ? '#d1d1f5' : '#18181a',
+  
 
   '& > div:nth-of-type(2)': {
     marginBottom: '1rem',
