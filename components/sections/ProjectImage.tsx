@@ -27,7 +27,6 @@ const ProjectImage = ({
     <Box
       ref={imageRef}
       sx={{
-        width: isMobile ? '100%' : 'inherit',
         marginBottom: isMobile ? '2rem' : 0,
         opacity: imageInView ? 1 : 0,
         transition: 'opacity 0.6s ease-in-out, transform 0.6s ease-in-out',
@@ -49,7 +48,6 @@ const ProjectImage = ({
               objectFit: 'cover',
               boxShadow: theme.shadows[5],
               borderRadius: '2%',
-              width: '100%',
             }}
           />
         </motion.div>

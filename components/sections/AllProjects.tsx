@@ -2,6 +2,7 @@ import ImageList from '@mui/material/ImageList';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container'
 import SectionTemplate from '../layout/SectionTemplate';
 import ProjectItem from './ProjectItem';
 import { IProject } from '../../types/app/Iproject';
@@ -17,17 +18,14 @@ const AllProjectsSection = ({allProjects}:IAllProjectsSection) => {
 
   const lgScreen = useMediaQuery(theme.breakpoints.up('md'));
   const smScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-  const xsScreen = useMediaQuery(theme.breakpoints.down('xs'));
+  const xsScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const columns = xsScreen ? 1 : smScreen ? 2 : 3;
   const height = lgScreen ? 300 : 200;
 
-  //all the data will have a slug property. 
-  //use that as the key
-
   return (
     <SectionTemplate heading={allProjecstHeading}>
-      <Box width="100%">
+      <Container maxWidth='lg'>
         <ImageList sx={{ width: '100%' }} cols={columns} rowHeight={height}>
           {allProjects.map((project) => (
             <ProjectItem
@@ -40,7 +38,7 @@ const AllProjectsSection = ({allProjects}:IAllProjectsSection) => {
             />
           ))}
         </ImageList>
-      </Box>
+      </Container>
     </SectionTemplate>
   );
 };

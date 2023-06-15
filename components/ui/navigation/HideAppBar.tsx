@@ -22,7 +22,7 @@ const StyledToolbar = styled(Toolbar)({
 
 const HideAppBar = () => {
   const { state } = useAppContext();
-  const {showModal} = state
+  const { showModal } = state;
 
   const defaultStyle = css`
     min-height: 162.38px;
@@ -58,9 +58,7 @@ const HideAppBar = () => {
               <Logo />
               <MuiSwitch onClick={toggleDarkMode} />
             </Box>
-            <Box>
-              <NavTabs />
-            </Box>
+            <NavTabs />
           </StyledToolbar>
         </AppBar>
       </Slide>

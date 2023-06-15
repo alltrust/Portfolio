@@ -1,6 +1,6 @@
 import { IProject } from '../../types/app/Iproject';
 import Image from 'next/image';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
@@ -34,7 +34,7 @@ const ProjectItem = ({ image, title, author, date, slug }: IProjectItem) => {
   return (
     <ImageListItem sx={{ margin: '16px' }}>
       <Image src={image} alt={title} fill style={{ objectFit: 'cover' }} />
-      <Link href={`/projects/${slug}`}>
+      <NextLink href={`/projects/${slug}`}>
         <ImageListItemBar
           title={title}
           subtitle={subheading}
@@ -47,7 +47,7 @@ const ProjectItem = ({ image, title, author, date, slug }: IProjectItem) => {
             </IconButton>
           }
         />
-      </Link>
+      </NextLink>
     </ImageListItem>
   );
 };

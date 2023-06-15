@@ -9,20 +9,20 @@ const commonCore = {
   typography: {
     fontFamily: 'Robot Mono, monospace',
   },
+  spacing:(factor:number) => `${0.25 * factor}rem`
 };
 
 export const lightTheme = createTheme({
   ...commonCore,
   palette: {
     primary: { main: '#a981e5' },
-    secondary: { main: '#2a48f3', dark: '#8541eb', contrastText: "#a981e5" },
+    secondary: { main: '#2a48f3', dark: '#8541eb', contrastText: '#a981e5' },
     text: {
       primary: grey[900],
       secondary: grey[800],
     },
     mode: 'light',
   },
- 
 });
 
 export const darkTheme = createTheme({
@@ -31,16 +31,15 @@ export const darkTheme = createTheme({
     primary: { main: '#46ee9a' },
     secondary: {
       main: '#2a48f3',
-      dark: "#46ee9a",
-      contrastText: "#87cbcb"
+      dark: '#46ee9a',
+      contrastText: '#87cbcb',
     },
     text: {
-      primary: grey[400],
-      secondary: grey[500],
+      primary: grey[500],
+      secondary: grey[400],
     },
     mode: 'dark',
   },
-
 });
 
 export const globalStyles = css`
@@ -52,7 +51,7 @@ export const globalStyles = css`
   }
   [data-theme='dark'] {
     body {
-      background-color: #000031;
+      background-color: #090928;
       color: #fff;
     }
   }

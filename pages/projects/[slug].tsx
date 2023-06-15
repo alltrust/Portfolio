@@ -6,6 +6,7 @@ import {
   removeFileExt,
 } from '../../lib/fetch-project';
 import { IProject } from '../../types/app/Iproject';
+import PageTemplate from '../../components/layout/PageTemplate';
 
 interface ISingleProjectPageProps {
   project: IProject;
@@ -14,9 +15,9 @@ interface ISingleProjectPageProps {
 const SingleProjectPage: NextPage<ISingleProjectPageProps> = ({ project }) => {
 
   return (
-    <>
+    <PageTemplate>
       <ProjectContent project={project} />
-    </>
+    </PageTemplate>
   );
 };
 

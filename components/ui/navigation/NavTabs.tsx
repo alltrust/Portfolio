@@ -29,7 +29,6 @@ const NavTabs = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  //perhaps i can pass via SSR and set the state.pathname early
   const router = useRouter();
   const pathname = splitPathname(router);
 

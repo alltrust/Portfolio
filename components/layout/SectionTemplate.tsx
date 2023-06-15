@@ -6,21 +6,25 @@ import { useInView } from 'react-intersection-observer';
 interface ISectionTemplate {
   heading?: string;
   children: React.ReactNode;
+  showSeperator?: boolean;
+  isFooter?: boolean;
 }
 
-const SectionTemplate = ({ heading, children }: ISectionTemplate) => {
-
+const SectionTemplate = ({
+  heading,
+  children,
+  showSeperator = true,
+  isFooter = false,
+}: ISectionTemplate) => {
   const [sectionRef, inView] = useInView({
     threshold: 0.2,
   });
-
-
 
   return (
     <Box
       ref={sectionRef}
       sx={{
-        minHeight: '100vh',
+        minHeight: isFooter ? '50vh' : '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
@@ -37,7 +41,7 @@ const SectionTemplate = ({ heading, children }: ISectionTemplate) => {
         </Box>
       ) : null}
       {children}
-      <Seperator />
+      {showSeperator ? <Seperator /> : null}
     </Box>
   );
 };

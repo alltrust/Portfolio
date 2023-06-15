@@ -30,6 +30,10 @@ export const AppProvider = ({ children, value }: IAppProviderProps) => {
     dispatch({ type: 'TOGGLE_DRAWER', payload: !state.toggleDrawer });
   };
 
+  // const handlePopperClick = ()=>{
+
+  // }
+
   const stateFns = {
     handleModalClose,
     handleModalOpen,
