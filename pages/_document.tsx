@@ -2,7 +2,6 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../lib/createEmotionCache';
 
-
 export default class MyDocument extends Document {
   render() {
     return (
@@ -15,6 +14,7 @@ export default class MyDocument extends Document {
           <link
             rel="preload"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            as="style"
           />
           <style>{`
             /* latin */
@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          <div id="portal"/>
+          <div id="portal" />
           <NextScript />
         </body>
       </Html>

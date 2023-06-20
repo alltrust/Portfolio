@@ -17,6 +17,6 @@ export const navLinks = [
   },
   {
     name: 'Resume',
-    link: '/resume',
+    link: '/resume/resume_aldo_2023.pdf',
   },
 ];

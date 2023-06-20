@@ -11,6 +11,7 @@ export interface IState {
   };
   showModal: boolean;
   toggleDrawer: boolean;
+  blogSubheadingId: string | undefined;
 }
 
 interface INavPathname {
@@ -41,6 +42,11 @@ interface IAlert {
 interface IShowModal {
   type: 'SHOW_MODAL';
   payload: IState['showModal'];
+};
+
+interface IBlogheadingId {
+  type: 'FOCUS_TOC_HEADING';
+  payload: IState['blogSubheadingId']
 }
 
 export type IAction =
@@ -49,7 +55,8 @@ export type IAction =
   | IIsLoading
   | IAlert
   | IShowModal
-  | IToggleDrawer;
+  | IToggleDrawer
+  | IBlogheadingId;
 
 export type IDispatch = (action: IAction) => void;
 

@@ -39,6 +39,9 @@ const NavTabs = () => {
   }, [dispatch, pathname, navPathname, navTabClicked]);
 
   const handleTabChange = (el: React.SyntheticEvent, newValue: string) => {
+    if (newValue === 'resume') {
+      return;
+    };
     dispatch({ type: 'FOCUS_NAVLINK_PATH', payload: newValue || 'home' });
     dispatch({ type: 'NAV_TAB_CLICKED', payload: true });
   };
@@ -50,7 +53,13 @@ const NavTabs = () => {
           {navLinks.map((navlink, idx) => {
             const { value, name, link } = navlink;
             const Component = link ? NextLink : 'button';
-            const componentProps = link ? { href: link } : {};
+            const componentProps = link
+              ? {
+                  href: link,
+                  target: name === 'Resume' ? '_blank' : '',
+                  rel: name === 'Resume' ? 'noopener noreferrer' : '',
+                }
+              : {};
             const lowerCasedName = name.toLowerCase();
 
             return (
@@ -58,7 +67,7 @@ const NavTabs = () => {
                 key={idx}
                 value={value || lowerCasedName}
                 label={name}
-                LinkComponent={Component}
+                LinkComponent={name === 'Resume' ? 'a' : Component}
                 {...componentProps}
                 onClick={name === 'Contact' ? handleModalOpen : undefined}
               />

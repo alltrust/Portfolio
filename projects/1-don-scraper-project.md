@@ -23,7 +23,7 @@ Don Scraper allows you to be able to scrape multiple articles at the same time a
 
 Originally it was designed for a good friend and client of mine who spends numerous hours a week having to navigate to each article and then selecting a couple of standout phrases/sentences that captures the essence of the article.
 
-### Settled Promises
+#### Settled Promises
 
 When the user submits a list of url's in the frontend, a function `scrapeRawArticles(urls: string[])` takes these urls as an arugment and awaits the completion of [axios](https://axios-http.com/docs/intro) get requests. These can be completed succesfully or rejected and there are several reasons why a get request to a particular url may be rejected.
 
@@ -103,7 +103,7 @@ const scrapeRawArticles = async (urls: string[]) => {
 };
 ```
 
-#### Let's break it down
+#### Breaking down scrapeRawArticles()
 
 `Promise.allSettled()` is an asynchronous function that executes multiple promises concurrently and returns only once all the promises have been settled- hence the name! The response from each promise is an object (containing the response data, status, and headers information).
 
@@ -205,7 +205,7 @@ const scrapeRawArticles = async (urls:string[])=>{
 }
 ```
 
-#### Something about Cheerio
+### Something about Cheerio
 
 So how does it work under the hood? After copying and pasting your links into the form input, it uses [Cheerio](https://cheerio.js.org/) to scrape the html from the elements of the desired articles with the `scrapeDataFromUrls()` function.
 
@@ -249,7 +249,7 @@ const scrapeDataFromUrls = (
   });
 ```
 
-#### Closer Look
+#### Closer Look at Cheerio and scrapeDataFromUrls()
 
 The `dataSet` parameter is the entirety of the data that Cheerio scraped from the corresponding article. It is a Buffer object which is a Node.js object that represents the binary data that was scraped (these are broken down into **chunks**).
 
@@ -312,11 +312,11 @@ It can read something like- from the loaded Html/Xml data, query for this select
 
 For those familiar with the Document Object Manipulation (DOM) manipulation, the cheerio `each()` method is similar to the `querySelectorAll()` method which returns a **nodeList**.
 
-### Some Limitations
+### Limitations
 
 Because this app was curated to the specific requirements of the aforementioned friend/client, it has two great limitations that come to mind immediately. The first is the manner in which it selects the article headers and the article paragraphs. The second is the manner in which it displays the summarized content.
 
-#### sitCheck function
+#### siteCheck() Fn
 
 The siteCheck function, although handle for specific use case, actually impedes the usability of the application. Without going into too much depth, the function looks something like:
 

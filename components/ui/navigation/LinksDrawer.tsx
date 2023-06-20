@@ -9,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import Drawer from '@mui/material/Drawer';
 import { navLinks } from '../../../utils/navLinks';
+import SkillSet from '../skill-set';
 
 const LinksDrawer = () => {
 
@@ -59,6 +60,7 @@ const LinksDrawer = () => {
             })}
           </List>
         </Box>
+        <SkillSet/>
       </Drawer>
     </Box>
   );

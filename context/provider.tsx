@@ -30,8 +30,8 @@ export const AppProvider = ({ children, value }: IAppProviderProps) => {
     dispatch({ type: 'TOGGLE_DRAWER', payload: !state.toggleDrawer });
   };
 
-  // const handlePopperClick = ()=>{
-
+  // const handleIntersectingHeadingId = (targetId: 'string')=>{
+  //   dispatch({type: "FOCUS_TOC_HEADING", payload: targetId})
   // }
 
   const stateFns = {

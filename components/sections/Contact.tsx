@@ -21,7 +21,7 @@ const ContactSection = () => {
   const { stateFns } = useAppContext();
   const { handleModalOpen } = stateFns;
   const theme = useTheme();
-  const xsScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const xsScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <SectionTemplate showSeperator={false} isFooter>

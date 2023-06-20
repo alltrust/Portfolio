@@ -1,3 +1,4 @@
+import { useTheme, useMediaQuery } from '@mui/material';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import ProjectBanner from './ProjectBanner';
@@ -14,38 +15,61 @@ interface IProjectContent {
 const ProjectContent = ({ project }: IProjectContent) => {
   const { title, content, image, author, dateCreated, stack } = project;
 
+  //use the headerRef and reference the md component
+  //use the inview observer to determine when the observer should highlight the corresponding header via TOC
+
+  const theme = useTheme();
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between('md', 'xl'));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up('xl'));
+
+  let gridSizeMain;
+  let gridSizeOutter;
+
+
+  if (isMediumScreen) {
+    gridSizeMain = 6;
+    gridSizeOutter = 3;
+  }
+  if (isLargeScreen) {
+    gridSizeMain = 8;
+    gridSizeOutter = 2;
+  }
+
   const subHeadingFind = /^(#{3,4})\s+(.*)$/gm;
-  const contentHeaders = content.match(subHeadingFind)
-  
+  const contentHeaders = content.match(subHeadingFind);
+
   const readingTime = calculateReadingTime(content);
 
-
   return (
-      <Container maxWidth="lg">
-        <Grid container spacing={3}>
-          <Grid item xs={2}/>
-          <Grid item xs={8}>
+    <Container maxWidth="lg">
+      <Grid container spacing={!isSmallScreen ? 3 : 0}>
+        <Grid item xs={gridSizeOutter} />
+        <Grid item xs={12} sm={gridSizeMain}>
+          <Box>
+            <ProjectBanner
+              authorImage={'/images/projects/image_dp.jpg'}
+              title={title}
+              author={author}
+              date={dateCreated}
+              image={`/images/projects/${image}`}
+              readingTime={readingTime}
+            />
             <Box>
-              <ProjectBanner
-                authorImage={'/images/projects/image_dp.jpg'}
-                title={title}
-                author={author}
-                date={dateCreated}
-                image={`/images/projects/${image}`}
-                readingTime={readingTime}
-              />
-              <Box>
-                <MarkdownComponent content={content}/>
-              </Box>
+              <MarkdownComponent content={content} />
             </Box>
-          </Grid>
-          <Grid item xs={2}>
-            <Box>
-              <TableOfContents headings={contentHeaders} title={title}/>
-            </Box>
-          </Grid>
+          </Box>
         </Grid>
-      </Container>
+        <Grid item xs={gridSizeOutter}>
+          {!isSmallScreen ? (
+            <Box>
+              <TableOfContents headings={contentHeaders} title={title} />
+            </Box>
+          ) : null}
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

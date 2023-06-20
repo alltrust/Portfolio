@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Box from '@mui/material/Box';
 import NextLink from 'next/link';
 import NextImage from 'next/image';
-import { useInView } from 'react-intersection-observer';
 import { IProject } from '../../types/app/Iproject';
 
 interface IProjectImage {

@@ -32,6 +32,11 @@ const reducer = (state: IState, action: IAction): IState => {
         ...state,
         toggleDrawer: action.payload,
       };
+    case 'FOCUS_TOC_HEADING':
+      return{
+        ...state, 
+        blogSubheadingId: action.payload 
+      }
     default:
       return state;
   }

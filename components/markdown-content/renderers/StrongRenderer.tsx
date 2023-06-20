@@ -2,7 +2,6 @@ import { ReactNode, useState } from 'react';
 import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material';
 import { PopperPlacementType } from '@mui/material/Popper';
-import useAppContext from '../../../hooks/useAppContext';
 import DescriptionPopper from '../../ui/popper';
 
 interface IStrongRenderer {
@@ -23,10 +22,6 @@ const StrongRenderer = ({ children }: IStrongRenderer) => {
       setOpen((prev) => placement !== newPlacement || !prev);
       setPlacement(newPlacement);
     };
-
-  // onlick open modal or have a slide come out with description of the children word.
-
-  //function to find the word with the description from the lib textDefinitions object
 
    const description = children.toLocaleString()
 

@@ -3,7 +3,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material';
+import useAppContext from '../../../hooks/useAppContext';
+import { useTheme} from '@mui/material';
 
 interface ITableOfContents {
   title: string;
@@ -11,35 +12,38 @@ interface ITableOfContents {
 }
 
 const TableOfContents = ({ title, headings }: ITableOfContents) => {
+  const { state } = useAppContext();
+  const { blogSubheadingId } = state;
   const theme = useTheme();
 
   return (
-    <Box sx={{ position: 'fixed' }}>
+    <Box sx={{ position: 'fixed', marginTop: '6rem' }}>
       <Typography component="h5" variant="body1" sx={{ fontWeight: 600 }}>
-        On This Page
+        On This Page | <Link href={'#'}>{title}</Link>
       </Typography>
       <List>
-        <ListItem>
-          <Link href={'#'}>{title}</Link>
-        </ListItem>
         {headings?.map((header, idx) => {
           const firstWhiteSpace = header.indexOf(' ');
           const isLevelFourHeader = firstWhiteSpace === 4;
           const headerName = header.slice(firstWhiteSpace + 1);
-          const headerHref = headerName.replace(' ', '-').toLowerCase();
-
+          const headerHref = headerName.replaceAll(' ', '-').toLowerCase();
+          const isHeadingInView = blogSubheadingId === headerHref;
           return (
             <ListItem key={`${header}-${idx}`}>
               <Link
                 href={`#${headerHref}`}
                 underline="none"
+                marginLeft={isLevelFourHeader ? '1rem' : '0'}
                 color={
-                  isLevelFourHeader
-                    ? theme.palette.text.primary
-                    : theme.palette.text.secondary
+                  isHeadingInView
+                    ? theme.palette.secondary.contrastText
+                    : theme.palette.text.primary
                 }
-                marginLeft={isLevelFourHeader ? 0 : '1rem'}
-                onClick={() => console.log(`#${headerHref}`)}
+                sx={{
+                  transform: isHeadingInView ? 'scale(1.15)' : 'none',
+                  transition: 'transform 0.3s ease-in-out',
+                  fontSize: '14px'
+                }}
               >
                 {headerName}
               </Link>

@@ -7,4 +7,5 @@ export const initialState: IState = {
   alert: { display: false },
   showModal: false,
   toggleDrawer: false,
+  blogSubheadingId: ''
 };

@@ -9,14 +9,14 @@ const commonCore = {
   typography: {
     fontFamily: 'Robot Mono, monospace',
   },
-  spacing:(factor:number) => `${0.25 * factor}rem`
+  spacing: (factor: number) => `${0.25 * factor}rem`,
 };
 
 export const lightTheme = createTheme({
   ...commonCore,
   palette: {
     primary: { main: '#a981e5' },
-    secondary: { main: '#2a48f3', dark: '#8541eb', contrastText: '#a981e5' },
+    secondary: { main: '#edf2f4', dark: '#8541eb', contrastText: '#a981e5' },
     text: {
       primary: grey[900],
       secondary: grey[800],
@@ -30,7 +30,7 @@ export const darkTheme = createTheme({
   palette: {
     primary: { main: '#46ee9a' },
     secondary: {
-      main: '#2a48f3',
+      main: '#090928',
       dark: '#46ee9a',
       contrastText: '#87cbcb',
     },
