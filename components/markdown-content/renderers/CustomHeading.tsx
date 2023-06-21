@@ -24,17 +24,17 @@ const CustomHeading = ({ children, variant }: ICustomHeading) => {
   } = useInView({
     threshold: 1,
   });
-
   //create a fn that takes in the entryEl id and checks if the
   // headingInView elId is the same as the TOC name and apply styles
   //and check is the previous state id is currently not in view ... maybe look for alternatives too
 
-  useEffect(()=>{
-    if (headingInView && state.blogSubheadingId !== headingEntry?.target.id) {
-      dispatch({type:"FOCUS_TOC_HEADING", payload: headingEntry?.target.id})
-    }
+  // useEffect(()=>{
+  //   if (headingInView && state.blogSubheadingId !== headingEntry?.target.id) {
+  //     dispatch({type:"FOCUS_TOC_HEADING", payload: headingEntry?.target.id});
+  //     console.log(headingEntry?.bounding)
+  //   }
     
-  },[headingInView, headingEntry?.target.id, state.blogSubheadingId, dispatch])
+  // },[headingInView, headingEntry?.target.id, state.blogSubheadingId, dispatch])
 
   
   return (

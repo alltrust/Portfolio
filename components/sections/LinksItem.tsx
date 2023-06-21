@@ -25,14 +25,14 @@ const LinksItem = ({ slug, links }: ILinkItem) => {
         </Link>
       {links?.map((link) => {
         return (
-          <Link
+          <a
             target="_blank"
             rel="noopener noreferrer"
             key={link}
             href={link}
           >
             external Link
-          </Link>
+          </a>
         );
       })}
     </Box>

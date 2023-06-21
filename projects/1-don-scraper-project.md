@@ -1,7 +1,7 @@
 ---
 title: 'Don Scraper'
 dateCreated: '2023-05-01'
-image: 'don-scraper-selected-articles.PNG'
+image: 'scraper-articles-selected.PNG'
 subHeading: 'Scrape article content from several sites'
 summary: 'Don Scraper allows you to scrape multiple sites sumiltaneously with greater conversion rate than Don Draper himself. Will save you time from checking each article'
 author: 'Aldo Garcia'

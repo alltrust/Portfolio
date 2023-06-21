@@ -15,9 +15,6 @@ interface IProjectContent {
 const ProjectContent = ({ project }: IProjectContent) => {
   const { title, content, image, author, dateCreated, stack } = project;
 
-  //use the headerRef and reference the md component
-  //use the inview observer to determine when the observer should highlight the corresponding header via TOC
-
   const theme = useTheme();
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -26,7 +23,6 @@ const ProjectContent = ({ project }: IProjectContent) => {
 
   let gridSizeMain;
   let gridSizeOutter;
-
 
   if (isMediumScreen) {
     gridSizeMain = 6;

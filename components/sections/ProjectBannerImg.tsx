@@ -4,15 +4,22 @@ import { IProject } from '../../types/app/Iproject';
 
 interface IProjectBannerImg {
   image: IProject['image'];
+  title: IProject['title'];
 }
 
-const ProjectBannerImg = ({ image }: IProjectBannerImg) => {
+const ProjectBannerImg = ({ image, title }: IProjectBannerImg) => {
   return (
     <Box
       maxWidth="md"
-      sx={{ backgroundColor: 'red', height: '400px', width: '100%' }}
+      sx={{ height: '400px', width: '100%', position: 'relative' }}
     >
-      {/* <NextImage src={image} fill alt={title} style={{objectFit:"contain"}}/> */}
+      <NextImage 
+        src={image}
+        fill
+        alt={title}
+        style={{ objectFit: 'contain' }}
+        sizes="(max-width: 600px) 100vw, 85vw"
+      />
     </Box>
   );
 };

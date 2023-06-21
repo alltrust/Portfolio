@@ -26,7 +26,7 @@ const ProjectBanner = ({
   const transformedDate = transformDate(date);
 
   return (
-    <Box
+    <Box 
       maxWidth="md"
       sx={{
         display: 'flex',
@@ -46,7 +46,7 @@ const ProjectBanner = ({
         title={title}
       />
 
-      <ProjectBannerImg image={image} />
+      <ProjectBannerImg image={image} title={title} />
     </Box>
   );
 };
