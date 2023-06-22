@@ -1,3 +1,7 @@
+---
+image: 'pixl_dp.png'
+---
+
 ## Who Am I?
 
 The short and direct answer is: I am Aldo Garcia, a full-stack developer based out of Toronto, Ontario.
