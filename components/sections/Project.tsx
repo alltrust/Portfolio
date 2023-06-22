@@ -9,6 +9,7 @@ import ProjectCode from './ProjectCode';
 import ProjectSummary from './ProjectSummary';
 import { selectJsCodeSnippets } from '../../utils/selectJsCodeSnippets';
 import ProjectMobileSlider from './ProjectMobileSlider';
+import IsMobileBox from '../ui/IsMobileBox';
 
 interface IProjectProps {
   project: IProject;
@@ -31,14 +32,7 @@ const Project = ({ project }: IProjectProps) => {
   return (
     <Container maxWidth="md">
       <ProjectHeader isMobile={isMobile} stack={stack} title={title} />
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <IsMobileBox>
         <ProjectImage
           imageRef={imageRef}
           imageInView={imageInView}
@@ -83,7 +77,7 @@ const Project = ({ project }: IProjectProps) => {
             />
           )}
         </Box>
-      </Box>
+      </IsMobileBox>
     </Container>
   );
 };

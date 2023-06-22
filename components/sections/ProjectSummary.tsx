@@ -5,8 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import StyledProjectContent from '../ui/StyledProjectContent';
 
 interface IProjectSummary {
-  isMobile: boolean;
-  imageInView: boolean;
+  isMobile?: boolean;
+  imageInView?: boolean;
   summary: IProject['summary'];
   stack: IProject['stack'];
   slug: IProject['slug'];

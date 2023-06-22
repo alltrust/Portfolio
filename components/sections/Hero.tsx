@@ -2,15 +2,14 @@ import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import NextImage from 'next/image';
-import PersonalLinks from './PersonalLinks';
 import SkillSet from '../ui/skill-set';
 import TypeAnimationBox from '../ui/TypeAnimationBox';
 
 const HeroSection = () => {
   const theme = useTheme();
-  const xsScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const imgOrientation = xsScreen ? 'portrait' : 'landscape';
+  const imgOrientation = isMobile ? 'portrait' : 'landscape';
   const imgMode = theme.palette.mode === 'dark' ? 'dark' : 'light';
 
   const heroImg = `/images/hero/${imgOrientation}-${imgMode}.jpg`;
@@ -18,12 +17,13 @@ const HeroSection = () => {
   return (
     <Box
       sx={{
-        height: '95vh',
+        height: '93vh',
         display: 'flex',
-        flexDirection: !xsScreen ? 'row' : 'column',
+        flexDirection: !isMobile ? 'row' : 'column',
+        marginTop: isMobile? '7px' : ''
       }}
     >
-      {!xsScreen ? (
+      {!isMobile ? (
         <Box
           sx={{
             width: '15%',
@@ -47,14 +47,13 @@ const HeroSection = () => {
               height: '50%',
             }}
           >
-            <PersonalLinks direction="row" />
             <SkillSet />
           </Box>
         </Box>
       ) : null}
       <Box
         sx={{
-          width: !xsScreen ? '85%' : '100%',
+          width: !isMobile ? '85%' : '100%',
           position: 'relative',
           height: '100%',
         }}

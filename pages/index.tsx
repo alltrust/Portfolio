@@ -2,29 +2,25 @@ import type { NextPage } from 'next';
 import HeroSection from '../components/sections/Hero';
 import FeaturedProjectsSection from '../components/sections/FeaturedProjects';
 import { IProject } from '../types/app/Iproject';
-import AboutSection from '../components/sections/About';
-import InfoSection from '../components/sections/Info';
-import { getFeaturedProjects } from '../lib/fetch-project';
-import useAppContext from '../hooks/useAppContext';
+import InfoSection from '../components/sections/PortfolioInfo';
+import { getFeaturedProjects, getPortfolioProject } from '../lib/fetch-project';
 import NullDataDisplay from '../components/ui/NullDataDisplay';
 import PageTemplate from '../components/layout/PageTemplate';
 
 interface IHomeProps {
   featuredProjectData: IProject[];
+  portfolioProject: IProject;
 }
 
-const Home: NextPage<IHomeProps> = ({ featuredProjectData }) => {
-  const { state } = useAppContext();
-  //dispatch context to store the featuredProjectData in the
-
-  //perhaps include a fullscreen modal/ overlay to welcome to page
-  
-
+const Home: NextPage<IHomeProps> = ({
+  featuredProjectData,
+  portfolioProject,
+}) => {
   return (
     <PageTemplate>
       <HeroSection />
-      <InfoSection />
-      <AboutSection />
+      <InfoSection portfolioData={portfolioProject} />
+      {/* <AboutSection /> */}
       {featuredProjectData ? (
         <FeaturedProjectsSection featuredData={featuredProjectData} />
       ) : (
@@ -36,14 +32,15 @@ const Home: NextPage<IHomeProps> = ({ featuredProjectData }) => {
 
 export async function getStaticProps() {
   const featuredProjectData = getFeaturedProjects();
+  const portfolioProject = getPortfolioProject();
 
   return {
     props: {
       featuredProjectData,
+      portfolioProject,
     },
     revalidate: 1800,
   };
 }
 
 export default Home;
- 

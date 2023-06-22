@@ -4,12 +4,9 @@ import { useTheme, styled } from '@mui/material/styles';
 import NextImage from 'next/image';
 
 const DynamicSlider = styled(Slider)(({ color }) => ({
-  '& .MuiSlider-thumb': {
+  '.MuiSlider-rail': {
     backgroundColor: color,
   },
-  // '& .MuiSlider-rail': {
-  //   backgroundColor: color,
-  // },
   '& .MuiSlider-track': {
     backgroundColor: color,
   },
@@ -56,6 +53,18 @@ const SkillSet = () => {
       svg: '/svg/mongodb-svgrepo-com.svg',
       color: 'green',
     },
+    {
+      name: 'HTML',
+      years: 2,
+      svg: '/svg/html-5-svgrepo-com.svg',
+      color: 'green',
+    },
+    {
+      name: 'CSS',
+      years: 2,
+      svg: '/svg/css-3-svgrepo-com.svg',
+      color: 'green',
+    },
   ];
 
   const marks = [
@@ -68,14 +77,20 @@ const SkillSet = () => {
   return (
     <Box
       sx={{
-        height: '80%',
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
       }}
     >
-      {skills.map((skill) => {
+      {skills.map((skill, idx) => {
         const { svg, name, years, svgForDark, color } = skill;
+        const lastEl = skills.length -1
+        const componentProps = lastEl === idx
+              ? {
+                  marks: marks,
+                }
+              : {};
 
         return (
           <Box
@@ -99,8 +114,7 @@ const SkillSet = () => {
               value={(years / 3) * 100}
               min={0}
               max={100}
-              color="primary"
-              marks={marks}
+              {...componentProps}
             />
           </Box>
         );

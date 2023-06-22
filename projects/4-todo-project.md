@@ -5,7 +5,7 @@ image: 'todo-project.PNG'
 subHeading: 'Simple todo application to start a good journey'
 summary: 'What would a joruney be without the handy todo app, without it you wouldnt know what todo'
 author: 'Aldo Garcia'
-isFeatured: true
+isFeatured: false
 stack: ['JavaScript', 'Firebase', 'React', 'Redux']
 ---
 

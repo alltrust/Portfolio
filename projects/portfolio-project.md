@@ -1,20 +1,19 @@
 ---
-title: 'Next Portolio'
+title: 'Next Portfolio'
 dateCreated: '2023-05-01'
-image: 'image_dp.jpg'
-summary: 'this is like an excerpt for a summary and such'
-subHeading: 'Scrape article content several sites'
+image: ''
+summary: They say don't make your own engineering portfolio, but rather use a template... so I made a portolio - for you! Built with Next.js and Material-ui. 
+subHeading: 'Explore this Nextjs Portfolio'
 author: 'Aldo Garcia'
-isFeatured: true
+isFeatured: false
 stack: ['Nextjs', 'Mui', 'MongoDB', 'Vercel', 'Jest', 'Rtl']
 ---
 
 ### Why this Portfolio?
 
-They say don't make your own engineering portfolio, but rather use a template... so I made a portolio - for you! Not only can you follow my and my development jouney, but also have several articles available at your disposal.
+They say don't make your own engineering portfolio, but rather use a template... so I made a portolio - for you! Not only can you follow me and my development jouney, but also have several articles available at your disposal.
 
-This portfolio is open sources and can be accessed by anybody ((GITLINK)). Using Next.js & Material-UI with emotion engine, this portolio is for both viewing and learning.
-
+This portfolio is open source and can be accessed by anybody ((GITLINK)). Using Next.js & Material-UI with emotion engine, this portolio is for both viewing and learning.
 
 ### Getting Started with NEXT.js & MUI
 
@@ -22,7 +21,7 @@ Before we dive into using Next.js with MUI ( via emotion engine)- let's understa
 
 Next.js offers **SSR**, **SSG**, & **ISR**. These are page rendering methods that allow us to render pages on the server, at build time, or in increments. This leads to pages with faster load times and having better SEO performance.
 
-This capability by Next.js does raise a particular problem when using MUI. If the pages are pre-generated or rendered on the server-side, how can the CSS also be pre-rendered or generated if it is on the client-side?
+This capability by Next.js does raise a particular problem when using MUI for styling. If the pages are pre-generated or rendered on the server-side, how can the CSS also be pre-rendered or generated if it is on the client-side?
 
 The answer is that the CSS can also be pre-rendered or generated during the SSR process, through techniques like **CSS-in-JS**. By providing a way to dynamically manage the CSS at runtime, the critical CSS styles are injected into the server-side HTML and, therefore, are pre-rendered. How is this done? ... Enter Emotion.
 
@@ -193,6 +192,8 @@ MyDocument.getInitialProps = async (ctx) => {
 
 ### Alternating Light and Dark Theme Modes 
 
+A feature several apps want their users to take advantage of is the switch between light and dark modes. 
+
 We have our `_document.tsx` file ready, now we need to service them to our `_app.tsx`. We will put these in separate components rather than crowding out `_app.tsx` file.
 
 ```js
@@ -274,7 +275,7 @@ export const globalStyles = css`
 `;
 ```
 
-Next we create client side emotion Cache so that the CSS-in-JS in stored throughout the session of the user in the browser. This is passed as a prop to our `cacheProvider` and wrapped around the MUIAThemeProvider. 
+Next we create client side emotion Cache so that the CSS-in-JS is stored throughout the session of the user in the browser. This is passed as a prop to our `cacheProvider` and wrapped around the MUIAThemeProvider. 
 
 
 ```js
@@ -299,12 +300,11 @@ const PageProvider = ({
 );
 ```
 
-Before we used the Emotion cache to ensure that CSS-in-JS styles were rendered on the server side, but in this component we use it to for client-side rendering. 
+Beforem, we used the Emotion cache to ensure that CSS-in-JS styles were rendered on the server side, but in this component we use it to for client-side rendering. 
 
 #### New features coming soon
 
 This portfolio will soon include a _skeleton_ view which will allow users interact with the site to dig up the sites' bare-bones code. For example, do you see a particular feature or component you like and perhaps would like to use it? Just toggle that ((SHOW IMAGER HERE)) button and a quick view of the code will display on your screen so you don't have to open another github link and contemplate whether you have a tab hoarding problem again.
-
 
 
 # this is a title

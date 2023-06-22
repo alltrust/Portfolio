@@ -18,6 +18,7 @@ import Modal from '../modal';
 const StyledToolbar = styled(Toolbar)({
   width: '100%',
   justifyContent: 'space-between',
+  minHeight: '0px'
 });
 
 const HideAppBar = () => {

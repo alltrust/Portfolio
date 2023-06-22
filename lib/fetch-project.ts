@@ -9,7 +9,7 @@ import { IProject } from '../types/app/Iproject';
 
 const projectDirectory = path.join(process.cwd(), 'projects');
 
- export const removeFileExt = (fileName: string) => {
+export const removeFileExt = (fileName: string) => {
   return fileName.replace(/\.md$/, '');
 };
 
@@ -36,7 +36,7 @@ const getProjectData = (fileName: string) => {
     isFeatured: data.isFeatured,
     stack: data.stack,
     content: content,
-    subHeading: data.subHeading
+    subHeading: data.subHeading,
   };
 
   return projectData;
@@ -74,4 +74,14 @@ export const getProjectByIdentifier = (slug: string) => {
   });
 
   return project;
+};
+
+export const getPortfolioProject = () => {
+  const allProjects = getAllProjects();
+
+  const portfolioProjects = allProjects.filter((project) => {
+    return project.isFeatured === false && project.title === 'Next Portfolio';
+  });
+
+  return portfolioProjects[0];
 };
