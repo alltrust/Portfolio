@@ -17,7 +17,7 @@ const HeroSection = () => {
   return (
     <Box
       sx={{
-        height: '93vh',
+        height: '94vh',
         display: 'flex',
         flexDirection: !isMobile ? 'row' : 'column',
         marginTop: isMobile? '7px' : ''

@@ -1,7 +1,7 @@
 ---
 title: 'Next Portfolio'
 dateCreated: '2023-05-01'
-image: ''
+image: 'portfolio_project_square.PNG'
 summary: They say don't make your own engineering portfolio, but rather use a template... so I made a portolio - for you! Built with Next.js and Material-ui. 
 subHeading: 'Explore this Nextjs Portfolio'
 author: 'Aldo Garcia'
@@ -26,6 +26,7 @@ This capability by Next.js does raise a particular problem when using MUI for st
 The answer is that the CSS can also be pre-rendered or generated during the SSR process, through techniques like **CSS-in-JS**. By providing a way to dynamically manage the CSS at runtime, the critical CSS styles are injected into the server-side HTML and, therefore, are pre-rendered. How is this done? ... Enter Emotion.
 
 ```js
+//_document.tsx
 export default class MyDocument extends Document {
   render() {
     return (
@@ -51,7 +52,12 @@ export default class MyDocument extends Document {
     );
   }
 }
+...
+```
 
+```js
+// _document.tsx
+...
 MyDocument.getInitialProps = async (ctx) => {
 
   const originalRenderPage = ctx.renderPage;
@@ -104,7 +110,7 @@ MyDocument.getInitialProps = async (ctx) => {
 ...
 };
 
-// createEmotionCache.ts
+// createEmotionCache.ts DONT FORGET TO EXPLAIN THE CSS AND PREPEND
 import createCache from '@emotion/cache';
 
 const createEmotionCache = ()=>{
@@ -300,7 +306,7 @@ const PageProvider = ({
 );
 ```
 
-Beforem, we used the Emotion cache to ensure that CSS-in-JS styles were rendered on the server side, but in this component we use it to for client-side rendering. 
+Before we used the Emotion cache to ensure that CSS-in-JS styles were rendered on the server side, but in this component we use it to for client-side rendering. 
 
 #### New features coming soon
 

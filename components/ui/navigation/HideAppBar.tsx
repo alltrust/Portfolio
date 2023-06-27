@@ -18,7 +18,7 @@ import Modal from '../modal';
 const StyledToolbar = styled(Toolbar)({
   width: '100%',
   justifyContent: 'space-between',
-  minHeight: '0px'
+  minHeight: '0px',
 });
 
 const HideAppBar = () => {
@@ -31,6 +31,7 @@ const HideAppBar = () => {
 
   const { theme, resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+
   const trigger = useScrollTrigger();
 
   useEffect(() => setMounted(true), []);
@@ -55,7 +56,14 @@ const HideAppBar = () => {
           }}
         >
           <StyledToolbar>
-            <Box sx={{ marginRight: '3rem' }}>
+            <Box
+              sx={{
+                marginRight: '3rem',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
               <Logo />
               <MuiSwitch onClick={toggleDarkMode} />
             </Box>
