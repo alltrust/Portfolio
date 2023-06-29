@@ -34,7 +34,7 @@ const SectionTemplate = ({
       }}
     >
       {heading ? (
-        <Box sx={{ marginBottom: '3rem', marginTop: '3rem' }}>
+        <Box sx={{ marginBottom: '3rem', marginTop: '3rem', textAlign: 'center' }}>
           <Typography variant="h2" component="h2">
             {heading}
           </Typography>

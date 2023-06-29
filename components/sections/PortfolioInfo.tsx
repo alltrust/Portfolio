@@ -18,7 +18,7 @@ interface IInfoSection {
 const InfoSection = ({ portfolioData }: IInfoSection) => {
   const { content, summary, stack, slug, links, subHeading } = portfolioData;
 
-  const infoHeading = 'This Portfolio';
+  const infoHeading = 'Next Portfolio';
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

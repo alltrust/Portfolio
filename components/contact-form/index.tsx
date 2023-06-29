@@ -93,6 +93,7 @@ const ContactForm = () => {
             error={touched.email && Boolean(errors.email)}
             helperText={touched.email && errors.email}
             onBlur={handleBlur}
+            sx={{ marginTop: '7px', marginBottom: '7px'}}
           />
           <Field
             {...getFieldProps('message')}

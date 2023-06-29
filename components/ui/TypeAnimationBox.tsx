@@ -1,20 +1,29 @@
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import { styled, useTheme} from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { TypeAnimation } from 'react-type-animation';
 
+
 const TypeAnimationBox = () => {
+  const StyledTypeAnimation = styled(TypeAnimation)(({theme})=>({
+    '&::after': {
+      color: theme.palette.secondary.dark,
+    },
+  }));
+
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Box
       sx={{
         position: 'absolute',
         textAlign: 'end',
-        right: '0',
-        color: theme.palette.text.primary,
+        right: '10px',
+        color: theme.palette.primary.light,
       }}
     >
-      <TypeAnimation
+      <StyledTypeAnimation
         sequence={[
           'I am Aldo Garcia',
           1100,
@@ -23,7 +32,7 @@ const TypeAnimationBox = () => {
           'I am YOUR fullstack developer',
           1100,
         ]}
-        style={{ fontSize: '4em' }}
+        style={{ fontSize: !isMobile ?'4em' : '3rem'}}
         repeat={Infinity}
         wrapper="h2"
       />

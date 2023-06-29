@@ -15,7 +15,7 @@ const commonCore = {
 export const lightTheme = createTheme({
   ...commonCore,
   palette: {
-    primary: { main: '#a981e5' },
+    primary: { main: '#a981e5', light: '#362352' },
     secondary: { main: '#edf2f4', dark: '#8541eb', contrastText: '#a981e5' },
     text: {
       primary: grey[900],
@@ -28,7 +28,7 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   ...commonCore,
   palette: {
-    primary: { main: '#46ee9a' },
+    primary: { main: '#46ee9a', light: '#effbf7' },
     secondary: {
       main: '#090928',
       dark: '#46ee9a',
