@@ -1,7 +1,10 @@
 
 import { ReactNode } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import  tomorrow  from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+
+SyntaxHighlighter.registerLanguage('js', js)
 
 interface ICodeRenderer{
     node?: any,

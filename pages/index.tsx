@@ -20,7 +20,6 @@ const Home: NextPage<IHomeProps> = ({
     <PageTemplate>
       <HeroSection />
       <InfoSection portfolioData={portfolioProject} />
-      {/* <AboutSection /> */}
       {featuredProjectData ? (
         <FeaturedProjectsSection featuredData={featuredProjectData} />
       ) : (

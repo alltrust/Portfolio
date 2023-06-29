@@ -182,7 +182,7 @@ Simply, if something is mutable is can 'mutate' meaning change. Therefore, if so
 
 Therefore, in the previous `addReminder()` function, it follows the principle of immutability by not changing/mutating the original state directly- but rather it creates new arrays and objects by _copying_ them and then updating them.
 
-This is where [Immer]() can come in handy. It conveniently comes with redux-toolkit and simplifies having to write immutable logic. For example, `produce` is a function provided by the Immer library that takes two arguments, the state and a callback function. The callback function is given a _draft_ of the original state and within the callback itself, it is safe to write mutable code to change the state. Here is an example directly from the redux-toolkit docs:
+This is where [Immer](https://www.npmjs.com/package/immer) comes in handy. It conveniently comes with redux-toolkit and simplifies having to write immutable logic. For example, `produce` is a function provided by the Immer library that takes two arguments, the state and a callback function. The callback function is given a _draft_ of the original state and within the callback itself, it is safe to write mutable code to change the state. Here is an example directly from the redux-toolkit docs:
 
 ```js
 import produce from 'immer';
@@ -284,64 +284,3 @@ root.render(
 );
 ```
 
-### Something about Custom hooks
-
-
-
-```js
-import { useReducer } from 'react';
-
-const inputReducer = (state, action) => {
-  switch (action.type) {
-    case 'INPUT':
-      return { ...state, value: action.payload };
-    case 'BLUR':
-      return { ...state, isTouched: true };
-    case 'RESET':
-      return { value: '', isTouched: false };
-  }
-};
-
-const UseValidateInput = (validateValue) => {
-  const [inputState, dispatchInputState] = useReducer(inputReducer, {
-    value: '',
-    isTouched: false,
-  });
-
-  const input = validateValue(inputState.value);
-  const invalidInput = !input && inputState.isTouched;
-
-  const userInputHandler = (event) => {
-    dispatchInputState({ type: 'INPUT', payload: event.target.value });
-  };
-
-  const onBlurHandler = () => {
-    dispatchInputState({ type: 'BLUR' });
-  };
-
-  const resetHandler = () => {
-    dispatchInputState({ type: 'RESET' });
-  };
-
-  return {
-    value: inputState.value,
-    input,
-    invalidInput,
-    userInputHandler,
-    onBlurHandler,
-    resetHandler,
-  };
-};
-```
-
-```js
-const reminderNameHandler = (reminderName) => reminderName.trim() !== '';
-const {
-  value: reminderValue,
-  input: reminderInput,
-  invalidInput: invalidReminderInput,
-  userInputHandler: reminderInputHandler,
-  onBlurHandler: reminderBlurHandler,
-  resetHandler: reminderResetHandler,
-} = useValidateInput(reminderNameHandler);
-```

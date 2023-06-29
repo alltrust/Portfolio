@@ -20,7 +20,7 @@ const HeroSection = () => {
         height: '94vh',
         display: 'flex',
         flexDirection: !isMobile ? 'row' : 'column',
-        marginTop: isMobile? '7px' : ''
+        marginTop: isMobile? '3px' : ''
       }}
     >
       {!isMobile ? (

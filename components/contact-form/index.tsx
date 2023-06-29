@@ -67,13 +67,13 @@ const ContactForm = () => {
     >
       {({ isSubmitting, getFieldProps, errors, touched, handleBlur }) => (
         <Form>
-          <DialogTitle>Contact</DialogTitle>
-          <DialogContentText>
-            To contact the owner of this site, please submit this form with the
-            following information. Aldo will get back to you as soon as
-            possible.
+          <DialogTitle>Contact Me</DialogTitle>
+          <DialogContentText margin="1rem">
+            If you have any questions, inquiries, feedback, or simply want to
+            network, fill out this form and I will get back to you soon!
           </DialogContentText>
           <Field
+            type="text"
             {...getFieldProps('name')}
             component={TextField}
             label="Name"
@@ -88,6 +88,7 @@ const ContactForm = () => {
             component={TextField}
             label="Email"
             variant="outlined"
+            type='email'
             fullWidth
             error={touched.email && Boolean(errors.email)}
             helperText={touched.email && errors.email}

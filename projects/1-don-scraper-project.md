@@ -23,7 +23,7 @@ Don Scraper allows you to be able to scrape multiple articles at the same time a
 
 Originally it was designed for a good friend and client of mine who spends numerous hours a week having to navigate to each article and then selecting a couple of standout phrases/sentences that captures the essence of the article.
 
-#### Settled Promises
+### Scraping Articles
 
 When the user submits a list of url's in the frontend, a function `scrapeRawArticles(urls: string[])` takes these urls as an arugment and awaits the completion of [axios](https://axios-http.com/docs/intro) get requests. These can be completed succesfully or rejected and there are several reasons why a get request to a particular url may be rejected.
 
@@ -32,6 +32,27 @@ One that is common are **user-agent** checks established from the website. This 
 Whenever you make an HTTP request to any page, HTTP headers are sent to the server to offer additional information about the source of the request.
 
 This means that it is possible to manipulate the headers sent (ie. the user agent) to corresponding website. However, the [cloudscraper](https://www.npmjs.com/package/cloudscraper) package offers the ability to send **headless requests** to be able to access some, not all, of the initially rejected promises.
+
+```js
+const scrapeRawArticles = async (urls:string[])=>{
+  try{
+    const responseArray = await Promise.allSettled(
+      urls.map(async (url) => {
+        const response = await axios.get(url);
+        return { response, url };
+      })
+    );
+    ...
+  }catch(){
+    throw new Error((err as Error | AxiosError).message);
+  }
+}
+```
+
+
+#### Promises
+
+`Promise.allSettled()` is an asynchronous function that executes multiple promises concurrently and returns only once all the promises have been settled- hence the name! The response from each promise is an object (containing the response data, status, and headers information).
 
 ```js
 const scrapeRawArticles = async (urls: string[]) => {
@@ -46,32 +67,17 @@ const scrapeRawArticles = async (urls: string[]) => {
 
     const rejectedResults = responseArray
       .filter(
-        <T>(
-          response: PromiseSettledResult<T>
-        ): response is PromiseRejectedResult => response.status === "rejected"
-      )
-      .map((responses) => {
-        const rejectedConfig = responses.reason.config;
-        const rejectedUrl = rejectedConfig.url;
-        return rejectedUrl;
-      });
+        ...);
 
     const responseArrayOfRejected = await Promise.allSettled(
-      rejectedResults.map(async (url) => {
-        const response = await cloudscraper(url);
-        return { response, url };
-      })
+     ...
     );
 
     const fullResponseArray = responseArray.concat(responseArrayOfRejected);
 
     const fulfilledResults = fullResponseArray
       .filter(
-        <T>(
-          response: PromiseSettledResult<T>
-        ): response is PromiseFulfilledResult<T> => {
-          return response.status === "fulfilled";
-        }
+       ...
       )
       .map((successfulResponse) => {
         const data = successfulResponse.value.response.data || successfulResponse.value.response ;
@@ -80,48 +86,22 @@ const scrapeRawArticles = async (urls: string[]) => {
           successfulResponse.value.url
         );
         const {
-          scrapedHeader,
-          scrapedParagraphs,
-          scrapedCoName,
-          scrapedTicker,
-
+         ...
         } = scrapeDataFromUrls(data, articleParagraphsSelector, articleHeadingSelector);
 
         return {
-          url: response.value.url,
-          heading: scrapedHeader,
-          companyName: scrapedCoName,
-          ticker: scrapedTicker,
-          contentBody: scrapedParagraphs,
+      ...
         };
       });
 
     return fulfilledResults;
   } catch (err) {
-    throw new Error((err as Error | AxiosError).message);
+    ...
   }
 };
 ```
 
-#### Breaking down scrapeRawArticles()
 
-`Promise.allSettled()` is an asynchronous function that executes multiple promises concurrently and returns only once all the promises have been settled- hence the name! The response from each promise is an object (containing the response data, status, and headers information).
-
-```js
-const scrapeRawArticles = async (urls:string[])=>{
-  try{
-    const responseArray = await Promise.allSettled(
-      urls.map(async (url) => {
-        const response = await axios.get(url);
-        return { response, url };
-      })
-    );
-    ...
-  }catch(){
-    ...
-  }
-}
-```
 
 The response status is then checked to determine whether it was `rejected`. If rejected, the rejected urls are then filtered and stored in the `rejectedArray`- which is then used to send a **headless request** using the cloudscraper library.
 

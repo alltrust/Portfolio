@@ -24,7 +24,6 @@ const InfoSection = ({ portfolioData }: IInfoSection) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [sectionRef, sectionInView] = useInView({
-    // triggerOnce: true,
     threshold: 0.2,
   });
 

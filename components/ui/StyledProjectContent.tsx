@@ -11,7 +11,6 @@ const StyledContentPaper = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.primary,
   padding: '2%',
   backgroundColor: theme.palette.mode !== 'dark' ? '#d1d1f5' : '#18181a',
-  
 
   '& > div:nth-of-type(2)': {
     marginBottom: '1rem',
@@ -28,27 +27,24 @@ interface IStyledProjectContent {
 
 const StyledProjectContent = ({
   summary,
-  stack,
   slug,
   links,
   subHeading,
 }: IStyledProjectContent) => {
   return (
-    <>
-      <StyledContentPaper elevation={3}>
-        <Box>
-          <Typography variant="h5" component="h5">
-            {subHeading}
-          </Typography>
-        </Box>
-        <Box>
-          <Typography variant="body2" component="p">
-            {summary}
-          </Typography>
-        </Box>
-        <LinksItem slug={slug} links={links} />
-      </StyledContentPaper>
-    </>
+    <StyledContentPaper elevation={3} >
+      <Box>
+        <Typography variant="h5" component="h5">
+          {subHeading}
+        </Typography>
+      </Box>
+      <Box>
+        <Typography variant="body2" component="p" marginTop="1rem">
+          {summary}
+        </Typography>
+      </Box>
+      <LinksItem slug={slug} links={links} />
+    </StyledContentPaper>
   );
 };
 

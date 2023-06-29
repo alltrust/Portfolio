@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Logo = () => {
   return (
-    <Link href={'/'}>
+    <Link href={'/'} style={{display:'flex', padding: '5px'}}>
       <Image
         src={'/images/new_logo.png'}
         alt="A for logo"
