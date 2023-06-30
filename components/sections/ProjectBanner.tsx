@@ -4,6 +4,7 @@ import { transformDate } from '../../utils/transformDate';
 import ProjectBannerImg from './ProjectBannerImg';
 import ProjectBannerInfo from './ProjectBannerInfo';
 import ProjectBannerTitle from './ProjectBannerTitle';
+import ProjectBannerStack from './ProjectBannerStack';
 
 interface IProjectBanner {
   title: IProject['title'];
@@ -12,6 +13,7 @@ interface IProjectBanner {
   image: IProject['image'];
   authorImage: string;
   readingTime: number;
+  stack: IProject['stack'];
 }
 
 const ProjectBanner = ({
@@ -21,12 +23,12 @@ const ProjectBanner = ({
   image,
   authorImage,
   readingTime,
+  stack,
 }: IProjectBanner) => {
-
   const transformedDate = transformDate(date);
 
   return (
-    <Box 
+    <Box
       maxWidth="md"
       sx={{
         display: 'flex',
@@ -45,6 +47,7 @@ const ProjectBanner = ({
         author={author}
         title={title}
       />
+      <ProjectBannerStack stack={stack} />
 
       <ProjectBannerImg image={image} title={title} />
     </Box>

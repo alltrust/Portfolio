@@ -13,7 +13,7 @@ interface IProjectContent {
 }
 
 const ProjectContent = ({ project }: IProjectContent) => {
-  const { title, content, image, author, dateCreated } = project;
+  const { title, content, image, author, dateCreated, stack } = project;
 
   const theme = useTheme();
 
@@ -51,6 +51,7 @@ const ProjectContent = ({ project }: IProjectContent) => {
               date={dateCreated}
               image={`/images/projects/${image}`}
               readingTime={readingTime}
+              stack={stack}
             />
             <Box>
               <MarkdownComponent content={content} />

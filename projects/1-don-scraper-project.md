@@ -103,7 +103,7 @@ const scrapeRawArticles = async (urls: string[]) => {
 
 
 
-The response status is then checked to determine whether it was `rejected`. If rejected, the rejected urls are then filtered and stored in the `rejectedArray`- which is then used to send a **headless request** using the cloudscraper library.
+The response status is then checked to determine whether it was `rejected`. If rejected, the rejected urls are then filtered and stored in the `rejectedArray`- which is then used to send a headless request using the cloudscraper library.
 
 ```js
 const scrapeRawArticles = async (urls:string[])=>{

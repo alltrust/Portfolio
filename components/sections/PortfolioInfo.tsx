@@ -32,7 +32,7 @@ const InfoSection = ({ portfolioData }: IInfoSection) => {
   return (
     <SectionTemplate heading={infoHeading}>
       <Container maxWidth="md" ref={sectionRef}>
-        <Grid container spacing={2} direction={isMobile ? 'column' : 'row'}>
+        <Grid container spacing={2} direction={isMobile ? 'column' : 'row'} alignItems={'center'}>
           {codeSnippets && isMobile && (
             <Grow in={sectionInView}>
               <Grid item xs={12} width={'100%'}>

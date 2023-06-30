@@ -11,6 +11,7 @@ interface IStrongRenderer {
 const StrongRenderer = ({ children }: IStrongRenderer) => {
   const theme = useTheme();
 
+  
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<PopperPlacementType>();
@@ -29,7 +30,7 @@ const StrongRenderer = ({ children }: IStrongRenderer) => {
     <>
     <DescriptionPopper open={open} anchorEl={anchorEl} description={description}/>
     <Button
-      sx={{ color: theme.palette.secondary.dark, display: 'inline-block' }}
+      sx={{ color: theme.palette.secondary.dark, display: 'inline-block', padding: '0px 0px' }}
       onClick={handlePopperClick('top')}
     >
       {children}
