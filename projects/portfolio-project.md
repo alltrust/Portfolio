@@ -27,30 +27,28 @@ The answer is that the CSS can also be pre-rendered or generated during the SSR 
 
 ```js
 //_document.tsx
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          />
-          <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            as="style"
-          />
-          {(this.props as any).emotionStyleTags}
-        </Head>
-        <body>
-          <Main />
-          <div id="portal" />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
+  return (
+    <Html lang="en">
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        {/* Inject MUI styles first to match with the prepend: true configuration. */}
+        {emotionStyleTags}
+      </Head>
+      <body>
+        <Main />
+        <div id="portal" />
+        <NextScript />
+      </body>
+    </Html>
+  );
 }
 ...
 ```
@@ -58,7 +56,7 @@ export default class MyDocument extends Document {
 ```js
 // _document.tsx
 ...
-MyDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async (ctx:DocumentContext) => {
 
   const originalRenderPage = ctx.renderPage;
 
@@ -67,7 +65,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App: any) =>
+      enhanceApp: (App) =>
         function EnhanceApp(props) {
           return <App emotionCache={cache} {...props} />;
         },
@@ -313,6 +311,3 @@ Before we used the Emotion cache to ensure that CSS-in-JS styles were rendered o
 This portfolio will soon include a _skeleton_ view which will allow users interact with the site to dig up the sites' bare-bones code. For example, do you see a particular feature or component you like and perhaps would like to use it? Just toggle that ((SHOW IMAGER HERE)) button and a quick view of the code will display on your screen so you don't have to open another github link and contemplate whether you have a tab hoarding problem again.
 
 
-# this is a title
-
-This is some regular text with a [link]

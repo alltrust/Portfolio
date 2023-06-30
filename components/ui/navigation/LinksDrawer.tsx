@@ -42,7 +42,7 @@ const LinksDrawer = () => {
           <Divider />
           <List>
             {navLinks.map((navLink, idx) => {
-              const { value, name, link } = navLink;
+              const { name, link } = navLink;
               const Component = link ? NextLink : 'button';
               const componentProps = link ? { href: link } : {};
               return (

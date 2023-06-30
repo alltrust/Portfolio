@@ -29,7 +29,7 @@ const MarkdownComponent = ({ content }: IMarkdownComponent) => {
           return <ImageRenderer paragraph={paragraph} />;
         },
 
-        code: ({ inline, className, children, ...props }) => {
+        code: ({ inline, className, children }) => {
           return (
             <CodeRenderer inline={inline} className={className} >
               {children}

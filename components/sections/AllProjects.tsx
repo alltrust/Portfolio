@@ -1,7 +1,6 @@
 import ImageList from '@mui/material/ImageList';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material';
-import Box from '@mui/material/Box';
 import Container from '@mui/material/Container'
 import SectionTemplate from '../layout/SectionTemplate';
 import ProjectItem from './ProjectItem';

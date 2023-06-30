@@ -84,7 +84,7 @@ const SkillSet = () => {
       }}
     >
       {skills.map((skill, idx) => {
-        const { svg, name, years, svgForDark, color } = skill;
+        const { svg, name, years, svgForDark } = skill;
         const lastEl = skills.length -1
         const componentProps = lastEl === idx
               ? {

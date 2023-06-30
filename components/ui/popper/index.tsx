@@ -2,7 +2,6 @@ import Popper, { PopperPlacementType } from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import { textDefinitionHelpers } from '../../../lib/textDefinitionHelpers';
 
 interface IDescriptionPopper {

@@ -4,9 +4,8 @@ import { EmotionCache } from '@emotion/react';
 
 import PageProvider from '../components/providers/PageProvider';
 import Layout from '../components/layout/Layout';
-//try creating a HEAD component with attributes
 
-interface IAppProps extends AppProps {
+export interface IAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 

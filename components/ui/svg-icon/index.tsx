@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import NextImage from 'next/image';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 interface ISvgIcon {
   svgLink: string;

@@ -46,8 +46,10 @@ export const textDefinitionHelpers: ITextDefinitionHelpers = {
     'Used as a "store" to manage and modiy the state for your entire application. Helps prevent prop drilling.',
   'component mount':
     'On initial rendering or when the component is inserted into the DOM and becomes visible on the screen',
-  slice: '',
-  'action creators': '',
+  slice:
+    'portion of the Redux store that contains that subjects state and reducer logic',
+  'action creators':
+    'A utitlity function that applies to the corresponding slice. Usually has the "type" property describing the action its taking.',
+  'reducer functions':
+    'These specify the logic behind the action creator. Used to access and update the state accordingly.',
 };
-
-//EDIT THESE CAUSE THEY ARE COPY PASTES

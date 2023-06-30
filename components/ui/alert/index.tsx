@@ -1,5 +1,5 @@
 import Snackbar from '@mui/material/Snackbar';
-import Alert, { AlertColor } from '@mui/material/Alert';
+import Alert from '@mui/material/Alert';
 import useAppContext from '../../../hooks/useAppContext';
 
 const AlertDisplay = () => {

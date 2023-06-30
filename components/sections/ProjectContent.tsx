@@ -13,7 +13,7 @@ interface IProjectContent {
 }
 
 const ProjectContent = ({ project }: IProjectContent) => {
-  const { title, content, image, author, dateCreated, stack } = project;
+  const { title, content, image, author, dateCreated } = project;
 
   const theme = useTheme();
 
