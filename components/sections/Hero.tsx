@@ -1,13 +1,18 @@
 import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import NextImage from 'next/image';
 import SkillSet from '../ui/skill-set';
 import TypeAnimationBox from '../ui/TypeAnimationBox';
-import ThemedImage from '../ui/ThemedImage';
 
 const HeroSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const imgOrientation = isMobile ? 'portrait' : 'landscape';
+  const imgMode = theme.palette.mode === 'dark' ? 'dark' : 'light';
+
+  const heroImg = `/images/hero/${imgOrientation}-${imgMode}.jpg`;
 
   return (
     <Box
@@ -15,7 +20,7 @@ const HeroSection = () => {
         height: '94vh',
         display: 'flex',
         flexDirection: !isMobile ? 'row' : 'column',
-        marginTop: isMobile ? '3px' : '',
+        marginTop: isMobile? '3px' : ''
       }}
     >
       {!isMobile ? (
@@ -28,12 +33,12 @@ const HeroSection = () => {
           }}
         >
           <Box sx={{ width: '100%', height: '50%', position: 'relative' }}>
-            <ThemedImage
+            <NextImage
               src="/images/image_dp.jpg"
               alt="aldo garcia"
+              fill
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 600px) 100vw, 200px"
-              isMobile={isMobile}
             />
           </Box>
           <Box
@@ -53,9 +58,10 @@ const HeroSection = () => {
           height: '100%',
         }}
       >
-        <ThemedImage
+        <NextImage
+          src={heroImg}
           alt="hero Image"
-          isMobile={isMobile}
+          fill
           priority
           sizes="(max-width: 600px) 100vw, 85vw"
         />
