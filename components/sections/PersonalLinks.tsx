@@ -12,7 +12,7 @@ const linkList = [
   },
   {
     name: 'linkedIn',
-    link: 'https://linkedin.com/in/aldo-rene-garcia/',
+    link: 'www.linkedin.com/in/aldo-garcia-rene',
     icon: <LinkedInIcon style={{ width: '50px', height: '50px' }} />,
   },
   {

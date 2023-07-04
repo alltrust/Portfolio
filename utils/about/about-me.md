@@ -2,11 +2,11 @@
 image: 'pixl_dp.png'
 ---
 
-## New phone who dis?
+## New phone - who dis?
 
 
 INT. ALDO 'S HOUSE - BASEMENT - EARLY MORNING  
-Aldo's cell-phone rings. It's David Ornstein from The Athletic. He eating his farmer's breakfast wrap and answers.
+Aldo's cell-phone rings. It's David Ornstein from The Athletic. Aldo, eating his farmer's breakfast wrap, answers.
 
 ###### ALDO
 (proceeds to chew)  
@@ -17,7 +17,7 @@ Aldo's cell-phone rings. It's David Ornstein from The Athletic. He eating his fa
 
 ###### ALDO
 -No- it's Aldo, wrong number mate.  
-(... muffled noise from ornstein's - Aldo hears something about- "we still need to ask him some questions though")
+(... muffled noise from ornstein's end- Aldo hears something about- "...we still need to ask him some questions though")
 
 ###### ORNSTEIN
 (sighs of disappointment)  
@@ -57,7 +57,7 @@ Aldo's cell-phone rings. It's David Ornstein from The Athletic. He eating his fa
 -Tell me more about that.
 
 ##### ALDO 
--I've been a soccer athlete most of my life- my whole family's played. Really enjoyed working in a team dynamic where everyone's working together to achieve the same goal- we worked hard day in and day out, we were critical of each other and we learned a lot from having high expectations of one another. This inspired me to become high-performance coach at a Toronto academy- where our aim is to put student athletes on a path to achieving scholarhsip opportunities. 
+-I've been a soccer athlete most of my life- my whole family's played. Really enjoyed working in a team dynamic where everyone's working together to achieve the same goal- we worked hard day in and day out, we were critical of each other and we learned a lot from having high expectations of one another. This inspired me to become high-performance coach at Toronto based academy- where our aim is to put student athletes on a path to achieving scholarhsip opportunities. 
 
 ##### ORNSTEIN
 -Sounds to me like you're a great teamplayer, who's constantly learning from your peers and your students. Guess I can say you're also open to feedback and criticism considering you're used to that competitive environment.
@@ -81,13 +81,13 @@ Aldo's cell-phone rings. It's David Ornstein from The Athletic. He eating his fa
 ##### ALDO
 (takes deep breath, calming down)  
 -Initially, I taught myself how to not smash my head on the keyboard out of frustation and to take deep breaths whenever required. 
-I then went the ever-popular web dev route with HTML, CSS and JavaScript. Later picked up solid understanding of frameworks with React to build MERN stack apps with typescript- and now I've been working a lot with NEXT.js.
+I then went the ever-popular web dev route with HTML, CSS and JavaScript. Later picked up a solid understanding of frameworks with React to build MERN stack apps with typescript- and now I've been working a lot with NEXT.js.
 
 -I know I wanted a change in my life trajectory. I wanted to find something that would lead me to constantly growing and learning- that's why I took it seriously, because I craved problem-solving, like puzzles and legos- and to do this in a creative way is what makes it most enjoyable. 
 
 ##### ORNSTEIN
 (sarcastically)  
--WOW! that's amazing! Ok, last thing, we need a quote from you- some words that really resonate with you. GO!
+-WOW! that's amazing!... Ok, last thing, we need a quote from you- some words that really resonate with you. GO!
 
 ##### ALDO
 (without hesitation - Finally puts down his breakfast wrap)  

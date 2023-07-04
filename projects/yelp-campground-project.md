@@ -1,6 +1,6 @@
 ---
 title: 'Campground App'
-dateCreated: '2023-05-01'
+dateCreated: '2023-05-05'
 image: 'yelp-campground-project.PNG'
 subHeading: 'Every campground is an adventure'
 summary: 'Like a yelp Camground app where you can map out a campground with images, description and location. Login and register a campground, or review someone elses!'
@@ -19,15 +19,19 @@ stack:
   ]
 ---
 
-This Yelp-like campground app uses the [MapBox SDK](https://www.npmjs.com/package/@mapbox/mapbox-sdk) for users to locate, create, review and update campgrounds in their respective areas.
+This Yelp-like campground app uses the [MapBox SDK](https://www.npmjs.com/package/@mapbox/mapbox-sdk) for users to locate, create, review and update campgrounds in their respective geographical areas.
+
 This application follows an MVC (Model-View-Controller) software architect pattern.
 
 ### Something about MVC
 
 The model represents the data and logic of how it will be handled, validated and interacts with a database. 
+
 The Views, in this case, are HTML templates using [ejs](https://ejs.co/) as a templating engine. 
 
-The controller is the intermediary between user interaction in the views, modifies the data from the models, and returns the data according to the operations- you can think about the controller like the person who delivers your pizza. You specified how you want your pizza and made a request to order the pizza. The person delivering coordinates the process to take your pizza request (can ensure you toppings are available...), make your pizza, and deliver it to you! 
+The controller is the intermediary between user interaction in the views, modifies the data from the models, and returns the data according to the operations- you can think about the controller like the person who delivers your pizza. 
+
+You specified how you want your pizza and made a request to order the pizza. The person delivering coordinates the process to take your pizza request (can ensure you toppings are available...), make your pizza, and deliver it to you! 
 
 
 ### Getting Started
@@ -39,7 +43,7 @@ The campground id is used to pass to the `findByIdAndUpdate()` mongoose method a
 
 It can be read as, "using this id, find this campground, and update it with the new campground details".
 
-Also, it is important to note that this function is **asynchronous** because its is writing to a database- hence why we use `async` at the top of the function, and `await` on any calls that require time to execute.
+Also, it is important to note that this function is **asynchronous** because its is writing to a database- hence why we use `async` at the top level of the function, and `await` on any calls that require time to execute.
 
 ```js
 // controllers/campground.js
@@ -87,9 +91,9 @@ module.exports.updateCampground = async (req, res) => {
 }
 ```
 
-Here the `imgs` that were uploaded to edit (via `req.files`) are saved into an array with each image containing a url, and a filename. This new array of then appended to the end of the current array of that campground `campground.images`.
+Here the `imgs` that were uploaded to edit (`req.files`) are saved into an array with each image containing a url, and a filename. This new array will then appended to the end of the current array of that campground `campground.images`.
 
-However, if we deleted any images that were previously associated with that campground, we do two things. We remove them from our [cloudinary](https://cloudinary.com/) storage- which hosts the uploaded images for our app. We also delete the corresponding filename of that image that is stored in our database using this line:
+However, if we deleted any images that were previously associated with that campground, we perform two operations. We remove them from our [cloudinary](https://cloudinary.com/) storage- which hosts the uploaded images for our app. We also delete the corresponding filename of that image that is stored in our database using this line:
 
 ```js
 // controllers/campground.js
@@ -98,7 +102,7 @@ await campground.updateOne({
 });
 ```
 
-In words this can be read something like, "the filename that matches the the filename of image to delete, pull it out and update that corresponding campground".
+In words this can be read something like, "the filename that matches the filename of images to delete, pull it out and update that corresponding campground".
 
 If are you curious as to how that looks in the ejs file:
 
@@ -107,7 +111,7 @@ If are you curious as to how that looks in the ejs file:
 <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
 ```
 
-As you can see, the `img.filename` is passed as a value of the checked image to delete.It contains the `name=deleteImages[]`, which if you remember is the array of deleted images that was passed to the `updateOne()` method- `{$in: req.body.deleteImages}`.
+As you can see, the `img.filename` is passed as a value of the checked image to delete. It contains the `name=deleteImages[]`, which if you remember is the array of deleted images that was passed to the `updateOne()` method- `{$in: req.body.deleteImages}`.
 
 Finally, it gives the user a success notification and redirects it to the current campground page that was edited.
 
@@ -179,7 +183,7 @@ const store = MongoStore.create({
 ...
 ```
 
-This store is then used to set the session configuration. The session configuration handles the name of the cookie `'session'` that will be saved in the database. This **cookie** plays the role of an identifier between the users browser and the database used for the application. Essentially, the session-data is updated depeding on the previous `touchAfter` property, which we set to 24 hours, and then in this `sessionConfig` object we establish that it should expire and have a maximum age of a week.
+This store is then used to set the **session** configuration. The session configuration handles the name of the cookie `'session'` that will be saved in the database. This **cookie** plays the role of an identifier between the users browser and the database used for the application. Essentially, the session-data is updated depending on the previous `touchAfter` property, which we set to 24 hours, and then in this `sessionConfig` object we establish that it should expire and have a maximum age of a week.
 
 The session is then registered to [express-session](http://expressjs.com/en/resources/middleware/session.html).
 
@@ -268,7 +272,6 @@ module.exports.reviewSchema = Joi.object({
 });
 ```
 
-MAKE SURE IT ALSO SHOWS EDGE CASES IN CASE IT FAILS
 When the user leaves a review, joi validates the input it against the review schema. It ensures that when a user leaves a rating, which is to be stored in the database, that before it is stored it MUST be a number rating between 1 and 5. It also ensures that within the content body being written by the user, that it doesn't contain HTML to avoid **XSS attacks**. 
 
 The `required()` method emphasizes that the those properties are a must if a user is to leave a review. 

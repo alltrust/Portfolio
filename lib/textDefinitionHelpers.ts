@@ -52,4 +52,6 @@ export const textDefinitionHelpers: ITextDefinitionHelpers = {
     'A utitlity function that applies to the corresponding slice. Usually has the "type" property describing the action its taking.',
   'reducer functions':
     'These specify the logic behind the action creator. Used to access and update the state accordingly.',
+    SEO: 'Search Engine Optimization- enhances visibilty and discoverabilty of your site and site pages to search engine crawlers',
+    session: 'can be used to persist a users authorization state and status while the user uses the app. This ensure that they are validated and have persmission to perform certain operations in the app.'
 };

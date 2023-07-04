@@ -25,7 +25,7 @@ Originally it was designed for a good friend and client of mine who spends numer
 
 ### Scraping Articles
 
-When the user submits a list of url's in the frontend, a function `scrapeRawArticles(urls: string[])` takes these urls as an arugment and awaits the completion of [axios](https://axios-http.com/docs/intro) get requests. These can be completed succesfully or rejected and there are several reasons why a get request to a particular url may be rejected.
+When the user submits a list of url's in the frontend, a function `scrapeRawArticles(urls: string[])` takes these urls as an arugment and awaits the completion of [axios](https://axios-http.com/docs/intro) get requests. These can be completed succesfully or rejected. There are several reasons why a get request to a particular url may be rejected.
 
 One that is common are **user-agent** checks established from the website. This is used so that the site can determine whether the request to the desired page is made from a legitimate user or from a server.
 
@@ -101,8 +101,6 @@ const scrapeRawArticles = async (urls: string[]) => {
 };
 ```
 
-
-
 The response status is then checked to determine whether it was `rejected`. If rejected, the rejected urls are then filtered and stored in the `rejectedArray`- which is then used to send a headless request using the cloudscraper library.
 
 ```js
@@ -136,7 +134,7 @@ const scrapeRawArticles = async (urls:string[])=>{
 
 The successful and rejected arrays are then concatenated to form one new fulfilled array. This was done so that the user would then be able to determine which articles still weren't able to be scraped along with those that were- which later can be manually added.
 
-The data of this responses would then be conditionally accessed via `successfulResponse.value.response.data || successfulResponse.value.response`. This is dependent on whether or not there was a `value.response.data` property- because remember, some of the responses didn't return `data`, ie. had `response.status === 'rejected'` even after using the cloudscraper api.
+The data of these responses would then be conditionally accessed via `successfulResponse.value.response.data || successfulResponse.value.response`. This is dependent on whether or not there was a `value.response.data` property- because remember, some of the responses didn't return `data`, ie. had `response.status === 'rejected'` even after using the cloudscraper api.
 
 The `siteCheck()` function takes in the url and returns a heading and paragraph selector (explained later), while the `scrapedDataFromUrls()` function uses the Cheerio library- which we will dive into next!
 
@@ -231,9 +229,9 @@ const scrapeDataFromUrls = (
 
 #### Closer Look at Cheerio and scrapeDataFromUrls()
 
-The `dataSet` parameter is the entirety of the data that Cheerio scraped from the corresponding article. It is a Buffer object which is a Node.js object that represents the binary data that was scraped (these are broken down into **chunks**).
+The `dataSet` parameter is the all the data that Cheerio scraped from the corresponding article. It is a `Buffer` object which is a Node.js object that represents the binary data that was scraped (these are broken down into **chunks**).
 
-While the `pSelector` and `hSelector` are strings are derived from a different function that caters the paragraph id selector and the heading id selector to the corresponding article url name. (This is one of the limitations that will mentioned later).
+While the `pSelector` and `hSelector` are strings are derived from a different function that caters the paragraph id selector and the heading id selector to the corresponding article url name. (This is one of the limitations that will be mentioned later).
 
 ```js
 const scrapeDataFromUrls = (
@@ -245,7 +243,7 @@ const scrapeDataFromUrls = (
 }
 ```
 
-Within the function there are two variables- `scrapedHeader` and `scrapedParagraphs`. These two variables are placeholders for header that cheerio was able to scrape as well as all the paragraphs that it was able to scrape.
+Within the function there are two variables- `scrapedHeader` and `scrapedParagraphs`. These two variables are placeholders for the headers that cheerio was able to scrape as well as all of the paragraphs.
 
 The `scrapedParagraphs` array contains an object with two parameters- `section` which will hold each of the paragraph sections, and a boolean `isSelected`, to determine if the user has "selected" this short paragraph to later be included in the article summary.
 
@@ -330,8 +328,10 @@ const siteCheck = (siteUrl: string) => {
 };
 ```
 
-What this function is doing taking in a siteUrl parameters (ie. www.benzinga.com/something/something) and switching the `articleParagraphSelector` and `articleHeadingSelector` depending on the the url. Remember when cheerio was used to scrape the paragraphs and headers from the article? Well this is how the selectors were decided. The reason it was done this way was because of the limited number of different articles that the client was having to scrape.
+What this function is doing taking in a siteUrl parameters (ie. www.benzinga.com/something/something) and switching the `articleParagraphSelector` and `articleHeadingSelector` depending on the the url. Remember when cheerio was used to scrape the paragraphs and headers from the article? Well this is how the selectors were decided. The reason it was done this way was because of the limited number of different articles that the client was having to scrape. 
 
 This method also omitted a lot of unecessary text from the initial cheerio scrape- because much of the text that is scraped is advertisement text, captions text and other unwanted text.
 
-A more useable and scalable way to have done this, can now be to use AI with the help of the openAi API to create a more elaborate summary of the entire scraped article. This would of course change the entire infrastucture of how this application works- which is well beyond the scope of this article.
+A more useable and scalable way to have done this, can now be to use AI with the help of the openAi API to create a more elaborate summary of the entire scraped article. This would of course change the entire infrastucture of how this application works- which is well beyond the scope of this article. Another method could be to use the [scraperapi](https://www.scraperapi.com/documentation/node/) for nodejs- which could solve for some of that "unscrapable" content from certain sites.
+
+Finally, to address the second limitation regarding how the data is displayed- it displays in a format that was most suitable for the client to share that information with the rest of the company. Therefore a solution for this scaling problem would be to offer more variety in the display methods as well as parameters of what is to be and not to be include in the scrape results/ data. 

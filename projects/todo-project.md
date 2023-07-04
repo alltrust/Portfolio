@@ -1,6 +1,6 @@
 ---
 title: 'Infamous Todo App'
-dateCreated: '2023-05-01'
+dateCreated: '2023-04-28'
 image: 'todo-project.PNG'
 subHeading: 'Simple todo application to start a good journey'
 summary: 'What would a joruney be without the handy todo app, without it you wouldnt know what todo'
@@ -13,9 +13,9 @@ The moment you have been waiting for, a todo app with a state management library
 
 ### Quick look
 
-Immediately you can see that there are function that handles the behaviour of the state and the selection of state with `dispatch` and `reminders`. `useDispatch()` is provided by [React-Redux](https://react-redux.js.org//) along with `useSelector()` to are used to interact with the state in the redux store.
+Immediately you can see that there are functions that handles the behaviour of the state and the selection of state with `dispatch` and `reminders`. `useDispatch()` is provided by [React-Redux](https://react-redux.js.org//) along with `useSelector()` which are used to interact with the state in the redux store.
 
-`useDispatch()` is used 'dispatch' certain behaviours and update the state in the redux store- while `useSelector()` is used to access the current value of that particular state.
+`useDispatch()` is used to 'dispatch' certain behaviours and update the state in the redux store- while `useSelector()` is used to access the current value of that particular state.
 
 ```js
 // App.js
@@ -46,7 +46,7 @@ function App() {
 }
 ```
 
-In this component, the `useEffect()` react hook is used for handling side effects when the components renders. In this case the first instance of `useEffect()` will dispatch a `getReminderData()` on **component mount**. In this case `getReminderData()` will fetch the data that has to do with all the reminders. We will look more at other dispatch functions and their sources later.
+In this component, the `useEffect()` react hook is used for handling side effects when the components renders. In this case the first instance of `useEffect()` will dispatch a `getReminderData()` on **component mount**. `getReminderData()` will fetch the data that has to do with all the reminders. We will look more at other dispatch functions and their sources later.
 
 The second instance of `useEffect()` dispatches `sendReminderData()` with the `reminders` as an argument only when the reminders state changes and when it is not the initial rendering of the component. If it is the initial rendering, it returns early and set the `isIniitalLoad = false`.
 
@@ -54,7 +54,7 @@ The second instance of `useEffect()` dispatches `sendReminderData()` with the `r
 
 [Redux-Toolkit](https://redux-toolkit.js.org/) provides us with utility functions that allow us to configure and update our redux store. Let's examine the **slice** of reminder actions that will we use to configure our store.
 
-We use the `createSlice()` function provided by redux-toolkit which allows us to sets the `name` and the `initial state` for the corresponding "slice", define **reducer functions** for handling the actions that will be dispatched throughout our appliction, and set **action creators** automatically from these reducers.
+We use the `createSlice()` function provided by redux-toolkit it allows us to sets the `name` and the `initial state` for the corresponding "slice", define **reducer functions** for handling the actions that will be dispatched throughout our appliction, and set **action creators** automatically from these reducers.
 
 ```js
 // store/reminders.js
@@ -67,31 +67,7 @@ const reminderSlice = createSlice({
   reducers: {
 
     addReminder: (state, action) => {
-
-      const reminderIndex = state.reminders.findIndex(
-        (reminder) => reminder.id === action.payload.id
-      );
-
-      const reminderExists = state.reminders[reminderIndex];
-      let updateReminder;
-      let updatedList;
-
-      if (!reminderExists) {
-        return { ...state, reminders: [...state.reminders, action.payload] };
-
-      } else {
-        updatedList = [...state.reminders];
-        updateReminder = {
-          ...reminderExists,
-          notes: action.payload.notes,
-          name: action.payload.name,
-          priority: action.payload.priority,
-          dueDate: action.payload.dueDate,
-        };
-        updatedList[reminderIndex] = updateReminder;
-      }
-
-      return { ...state, reminders: updatedList };
+...
     },
     ...
   },
@@ -171,9 +147,10 @@ const reminderSlice = createSlice({
 ...
 ```
 
-Through direct indexing it then locates the index of that reminder, and set it equal to the new updatedReminder- finally returning the new `updatedList` as the `reminders` state
+Through direct indexing it then locates the index of that reminder, and sets it equal to the new `updatedReminder` - finally returning the new `updatedList` as the `reminders` state.
 
-It is important to understand that this perhaps wasn't the 'cleanest' method to perform this task- although it does work.
+It is important to understand that this perhaps wasn't the 'cleanest' approach to perform this task- although it does work.
+
 Why is that? For that we have to look at mutability vs immutabilty and a library named Immer.
 
 #### Mutable, Immutable, & Immer
@@ -284,3 +261,4 @@ root.render(
 );
 ```
 
+Now our entire application has the ability to access the state from the store, as well as dispatch particular actions to then modify that state!

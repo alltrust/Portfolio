@@ -1,6 +1,6 @@
 ---
 title: 'Next Portfolio'
-dateCreated: '2023-05-01'
+dateCreated: '2023-06-01'
 image: 'portfolio_project_square.PNG'
 summary: They say don't make your own engineering portfolio, but rather use a template... so I made a portolio - for you! Built with Next.js and Material-ui. 
 subHeading: 'Explore this Nextjs Portfolio'
@@ -9,17 +9,16 @@ isFeatured: false
 stack: ['Nextjs', 'Mui', 'MongoDB', 'Vercel', 'Jest', 'Rtl']
 ---
 
-### Why this Portfolio?
 
 They say don't make your own engineering portfolio, but rather use a template... so I made a portolio - for you! Not only can you follow me and my development jouney, but also have several articles available at your disposal.
 
-This portfolio is open source and can be accessed by anybody ((GITLINK)). Using Next.js & Material-UI with emotion engine, this portolio is for both viewing and learning.
+This portfolio is open source and can be accessed by anybody on [github](https://github.com/alltrust/Portfolio). Using Next.js & Material-UI with emotion engine, this portolio is for both viewing and learning. If you like this portfolio, use it yourself and change whatever you desire to fit your wants. 
 
 ### Getting Started with NEXT.js & MUI
 
 Before we dive into using Next.js with MUI ( via emotion engine)- let's understand what Next.Js does under the hood for us, so we can better understand why this set-up process is a bit more complicated.
 
-Next.js offers **SSR**, **SSG**, & **ISR**. These are page rendering methods that allow us to render pages on the server, at build time, or in increments. This leads to pages with faster load times and having better SEO performance.
+Next.js offers **SSR**,**SSG**, &**ISR**. These are page rendering methods that allow us to render pages on the server, at build time, or in increments. This leads to pages with faster load times and having better **SEO** performance.
 
 This capability by Next.js does raise a particular problem when using MUI for styling. If the pages are pre-generated or rendered on the server-side, how can the CSS also be pre-rendered or generated if it is on the client-side?
 
@@ -133,7 +132,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App: any) =>
+      enhanceApp: (App) =>
         function EnhanceApp(props) {
           return <App emotionCache={cache} {...props} />;
         },
@@ -149,7 +148,7 @@ MyDocument.getInitialProps = async (ctx) => {
 ```js
 
 //document.tsx
-export default class MyDocument extends Document {
+export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   render() {
     return (
       <Html lang="en">
@@ -163,7 +162,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             as="style"
           />
-          {(this.props as any).emotionStyleTags}
+          {emotionStyleTags}
         </Head>
         <body>
           <Main />
