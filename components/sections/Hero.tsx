@@ -2,7 +2,6 @@ import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import NextImage from 'next/image';
-import SkillSet from '../ui/skill-set';
 import TypeAnimationBox from '../ui/TypeAnimationBox';
 import PersonalLinks from './PersonalLinks';
 
@@ -48,7 +47,6 @@ const HeroSection = () => {
               height: '50%',
             }}
           >
-            {/* <SkillSet /> */}
             <PersonalLinks direction='column'/>
           </Box>
         </Box>

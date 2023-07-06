@@ -8,5 +8,7 @@ export const initialState: IState = {
   showModal: false,
   toggleDrawer: false,
   blogSubheadingId: '',
-  focusedTechSkill: undefined
+  focusedTechSkill: undefined,
+  projectNamesWithLinks:  []
+
 };
