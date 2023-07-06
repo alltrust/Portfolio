@@ -10,13 +10,15 @@ stack:
   [
     'Typescript',
     'React',
-    'Node.js',
+    'Nodejs',
     'Express',
     'MongoDB',
     'StyledComponents',
     'RTL',
-    'Jest',
+    'Jest', 
+    'CSS'
   ]
+links: ['https://github.com/alltrust/job-tracker-app']
 ---
 
 Jobify is a job tracker application that combines MongoDb, Express, React, and Node.js (MERN) in this fullstack typescript application. It allows users to record, update, and track their job prospects and also provide a simple data visualizer to capture the summary of an individual on their job hunting journey.

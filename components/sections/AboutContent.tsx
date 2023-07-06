@@ -20,7 +20,7 @@ const AboutContent = ({ aboutMeData }: IAboutContent) => {
       <Box sx={{ textAlign: 'center' }}>
         <NextImage
           src={`/images/about/${image}`}
-          alt="pilxated dislay picture"
+          alt="pilexated dislay picture"
           width={300}
           height={400}
         />

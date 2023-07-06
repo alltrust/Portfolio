@@ -11,5 +11,5 @@ export interface IProject {
     subHeading: string;
     codeExample?: string;
     codeExampleExplanation?: string;
-    links?: string[];
+    links: string[];
   }

@@ -7,6 +7,7 @@ subHeading: 'Explore this Nextjs Portfolio'
 author: 'Aldo Garcia'
 isFeatured: false
 stack: ['Nextjs', 'Mui', 'MongoDB', 'Vercel', 'Jest', 'Rtl']
+links: ['https://github.com/alltrust/Portfolio']
 ---
 
 
@@ -18,7 +19,7 @@ This portfolio is open source and can be accessed by anybody on [github](https:/
 
 Before we dive into using Next.js with MUI ( via emotion engine)- let's understand what Next.Js does under the hood for us, so we can better understand why this set-up process is a bit more complicated.
 
-Next.js offers **SSR**,**SSG**, &**ISR**. These are page rendering methods that allow us to render pages on the server, at build time, or in increments. This leads to pages with faster load times and having better **SEO** performance.
+Next.js offers **SSR**, **SSG**, & **ISR**. These are page rendering methods that allow us to render pages on the server, at build time, or in increments. This leads to pages with faster load times and having better **SEO** performance.
 
 This capability by Next.js does raise a particular problem when using MUI for styling. If the pages are pre-generated or rendered on the server-side, how can the CSS also be pre-rendered or generated if it is on the client-side?
 
@@ -193,7 +194,7 @@ MyDocument.getInitialProps = async (ctx) => {
 };
 ```
 
-### Alternating Light and Dark Theme Modes 
+### Alternating Light and Dark Theme Modes
 
 A feature several apps want their users to take advantage of is the switch between light and dark modes. 
 

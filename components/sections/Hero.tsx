@@ -4,10 +4,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import NextImage from 'next/image';
 import SkillSet from '../ui/skill-set';
 import TypeAnimationBox from '../ui/TypeAnimationBox';
+import PersonalLinks from './PersonalLinks';
 
 const HeroSection = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const imgOrientation = isMobile ? 'portrait' : 'landscape';
   const imgMode = theme.palette.mode === 'dark' ? 'dark' : 'light';
@@ -47,7 +48,8 @@ const HeroSection = () => {
               height: '50%',
             }}
           >
-            <SkillSet />
+            {/* <SkillSet /> */}
+            <PersonalLinks direction='column'/>
           </Box>
         </Box>
       ) : null}

@@ -9,14 +9,17 @@ isFeatured: true
 stack:
   [
     'JavaScript',
-    'Node.js',
+    'Nodejs',
     'Express',
     'Ejs',
     'MongoDB',
     'Passport',
     'MapBox SDK',
     'BootStrap',
+    'HTML',
+    'CSS',
   ]
+links: ['https://github.com/alltrust/Yelp_camp']
 ---
 
 This Yelp-like campground app uses the [MapBox SDK](https://www.npmjs.com/package/@mapbox/mapbox-sdk) for users to locate, create, review and update campgrounds in their respective geographical areas.
@@ -25,14 +28,13 @@ This application follows an MVC (Model-View-Controller) software architect patte
 
 ### Something about MVC
 
-The model represents the data and logic of how it will be handled, validated and interacts with a database. 
+The model represents the data and logic of how it will be handled, validated and interacts with a database.
 
-The Views, in this case, are HTML templates using [ejs](https://ejs.co/) as a templating engine. 
+The Views, in this case, are HTML templates using [ejs](https://ejs.co/) as a templating engine.
 
-The controller is the intermediary between user interaction in the views, modifies the data from the models, and returns the data according to the operations- you can think about the controller like the person who delivers your pizza. 
+The controller is the intermediary between user interaction in the views, modifies the data from the models, and returns the data according to the operations- you can think about the controller like the person who delivers your pizza.
 
-You specified how you want your pizza and made a request to order the pizza. The person delivering coordinates the process to take your pizza request (can ensure you toppings are available...), make your pizza, and deliver it to you! 
-
+You specified how you want your pizza and made a request to order the pizza. The person delivering coordinates the process to take your pizza request (can ensure you toppings are available...), make your pizza, and deliver it to you!
 
 ### Getting Started
 
@@ -221,25 +223,25 @@ To authenticate user login credentials via `new LocalStrategy()` for username an
 
 The **LocalStrategy** is a module that is required by `passport-local`, and we pass in `User.authenticate()`- which we will look into further with `User.serializeUser()` and `User.deserializeUser()`.
 
-The `User` object comes from our User schema- which we required from our user schema model. 
+The `User` object comes from our User schema- which we required from our user schema model.
 
 ```js
 // models/user.js
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const UserSchema = new Schema({
-    email:{
-        type: String,
-        required: true,
-        unique: true
-    }
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 });
 
 UserSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('User', UserSchema);
 ```
 
 Look at the `passportLocalMongoose`. This module allows us to enable local authentication to our User. This plugin essentially simplifies the authentication process between Passport and the mongoose User schema- which is how we can then use the previous authentication and serialize methods!
@@ -272,6 +274,6 @@ module.exports.reviewSchema = Joi.object({
 });
 ```
 
-When the user leaves a review, joi validates the input it against the review schema. It ensures that when a user leaves a rating, which is to be stored in the database, that before it is stored it MUST be a number rating between 1 and 5. It also ensures that within the content body being written by the user, that it doesn't contain HTML to avoid **XSS attacks**. 
+When the user leaves a review, joi validates the input it against the review schema. It ensures that when a user leaves a rating, which is to be stored in the database, that before it is stored it MUST be a number rating between 1 and 5. It also ensures that within the content body being written by the user, that it doesn't contain HTML to avoid **XSS attacks**.
 
-The `required()` method emphasizes that the those properties are a must if a user is to leave a review. 
+The `required()` method emphasizes that the those properties are a must if a user is to leave a review.

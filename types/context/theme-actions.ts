@@ -12,6 +12,13 @@ export interface IState {
   showModal: boolean;
   toggleDrawer: boolean;
   blogSubheadingId: string | undefined;
+  focusedTechSkill: string | undefined;
+  projectNamesWithLinks: {
+    name: string;
+    links: string[];
+    slug: string;
+    stack: string[];
+}[];
 }
 
 interface INavPathname {
@@ -42,11 +49,21 @@ interface IAlert {
 interface IShowModal {
   type: 'SHOW_MODAL';
   payload: IState['showModal'];
-};
+}
 
 interface IBlogheadingId {
   type: 'FOCUS_TOC_HEADING';
-  payload: IState['blogSubheadingId']
+  payload: IState['blogSubheadingId'];
+}
+
+interface IFocusedTechSkill {
+  type: 'TECH_SELECT';
+  payload: IState['focusedTechSkill'];
+}
+
+interface IProjectNamesWithLinks {
+  type: 'ALL_NAMES_WITH_LINKS';
+  payload: IState['projectNamesWithLinks'];
 }
 
 export type IAction =
@@ -56,14 +73,16 @@ export type IAction =
   | IAlert
   | IShowModal
   | IToggleDrawer
-  | IBlogheadingId;
+  | IBlogheadingId
+  | IFocusedTechSkill
+  | IProjectNamesWithLinks;
 
 export type IDispatch = (action: IAction) => void;
 
 interface IContextActions {
   handleModalClose: () => void;
-  handleModalOpen: ()=> void;
-  handleToggleDrawer: ()=> void;
+  handleModalOpen: () => void;
+  handleToggleDrawer: () => void;
 }
 
 export type IContextType = {

@@ -9,7 +9,7 @@ isFeatured: true
 stack:
   [
     'TypeScript',
-    'Node.js',
+    'Nodejs',
     'Express',
     'MongoDB',
     'React-Router',
@@ -17,6 +17,7 @@ stack:
     'render.com',
     'cheerio',
   ]
+links: ['https://github.com/alltrust/B-Article-Scraper']
 ---
 
 Don Scraper allows you to be able to scrape multiple articles at the same time and it returns the body and the headers of the entire article. It organizes the scraped content for you so you can see what each article contains. Your content is then split into selectable sections so that you can create a general summary or overview of the article itself.
@@ -48,7 +49,6 @@ const scrapeRawArticles = async (urls:string[])=>{
   }
 }
 ```
-
 
 #### Promises
 
@@ -328,10 +328,10 @@ const siteCheck = (siteUrl: string) => {
 };
 ```
 
-What this function is doing taking in a siteUrl parameters (ie. www.benzinga.com/something/something) and switching the `articleParagraphSelector` and `articleHeadingSelector` depending on the the url. Remember when cheerio was used to scrape the paragraphs and headers from the article? Well this is how the selectors were decided. The reason it was done this way was because of the limited number of different articles that the client was having to scrape. 
+What this function is doing taking in a siteUrl parameters (ie. www.benzinga.com/something/something) and switching the `articleParagraphSelector` and `articleHeadingSelector` depending on the the url. Remember when cheerio was used to scrape the paragraphs and headers from the article? Well this is how the selectors were decided. The reason it was done this way was because of the limited number of different articles that the client was having to scrape.
 
 This method also omitted a lot of unecessary text from the initial cheerio scrape- because much of the text that is scraped is advertisement text, captions text and other unwanted text.
 
 A more useable and scalable way to have done this, can now be to use AI with the help of the openAi API to create a more elaborate summary of the entire scraped article. This would of course change the entire infrastucture of how this application works- which is well beyond the scope of this article. Another method could be to use the [scraperapi](https://www.scraperapi.com/documentation/node/) for nodejs- which could solve for some of that "unscrapable" content from certain sites.
 
-Finally, to address the second limitation regarding how the data is displayed- it displays in a format that was most suitable for the client to share that information with the rest of the company. Therefore a solution for this scaling problem would be to offer more variety in the display methods as well as parameters of what is to be and not to be include in the scrape results/ data. 
+Finally, to address the second limitation regarding how the data is displayed- it displays in a format that was most suitable for the client to share that information with the rest of the company. Therefore a solution for this scaling problem would be to offer more variety in the display methods as well as parameters of what is to be and not to be include in the scrape results/ data.

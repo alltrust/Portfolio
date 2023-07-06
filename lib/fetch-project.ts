@@ -1,5 +1,4 @@
 //functions that fetch all posts, allfeatured posts, individual posts
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -37,6 +36,7 @@ const getProjectData = (fileName: string) => {
     stack: data.stack,
     content: content,
     subHeading: data.subHeading,
+    links: data.links,
   };
 
   return projectData;
@@ -84,4 +84,18 @@ export const getPortfolioProject = () => {
   });
 
   return portfolioProjects[0];
+};
+
+export const getLinksandSlugs = () => {
+  const allProjects = getAllProjects();
+
+  const projectNamesWithLinks = allProjects.map((project) => {
+    return {
+      name: project.title,
+      links: project.links,
+      slug: project.slug,
+      stack: project.stack,
+    };
+  });
+  return projectNamesWithLinks;
 };

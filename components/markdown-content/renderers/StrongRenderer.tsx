@@ -30,7 +30,7 @@ const StrongRenderer = ({ children }: IStrongRenderer) => {
     <>
     <DescriptionPopper open={open} anchorEl={anchorEl} description={description}/>
     <Button
-      sx={{ color: theme.palette.secondary.dark, display: 'inline-block', padding: '0px 0px' }}
+      sx={{ color: theme.palette.secondary.dark, display: 'inline-block', padding: '0px 0px', minWidth: `5px` }}
       onClick={handlePopperClick('top')}
     >
       {children}

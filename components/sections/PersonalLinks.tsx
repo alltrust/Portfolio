@@ -12,7 +12,7 @@ const linkList = [
   },
   {
     name: 'linkedIn',
-    link: 'www.linkedin.com/in/aldo-garcia-rene',
+    link: 'https://linkedin.com/in/aldo-garcia-rene',
     icon: <LinkedInIcon style={{ width: '50px', height: '50px' }} />,
   },
   {
@@ -36,16 +36,28 @@ interface IPersonalLinks {
 const PersonalLinks = ({ direction = 'row' }: IPersonalLinks) => {
   const theme = useTheme();
 
-  
-  
+  const isDirectionRow = direction === 'row';
+
   return (
-    <Box sx={{ display: 'flex', flexDirection: direction, marginTop: '1rem', marginBottom: '1rem', justifyContent: 'space-evenly' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: direction,
+        marginTop: '1rem',
+        marginBottom: '1rem',
+        justifyContent: 'space-evenly',
+        height: !isDirectionRow ? '100%' : 'inherit',
+        alignItems: !isDirectionRow ? 'center' : 'normal',
+      }}
+    >
       {linkList.map((links, idx) => {
-        const {link, icon, iconForDark} = links
+        const { link, icon, iconForDark } = links;
         return (
           <Box key={idx}>
             <a href={link} target="blank" rel="noopener noreferrer">
-              {theme.palette.mode === 'dark' &&  iconForDark ? iconForDark : icon}
+              {theme.palette.mode === 'dark' && iconForDark
+                ? iconForDark
+                : icon}
             </a>
           </Box>
         );

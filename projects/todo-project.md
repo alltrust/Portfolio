@@ -6,7 +6,8 @@ subHeading: 'Simple todo application to start a good journey'
 summary: 'What would a joruney be without the handy todo app, without it you wouldnt know what todo'
 author: 'Aldo Garcia'
 isFeatured: false
-stack: ['JavaScript', 'Firebase', 'React', 'Redux', 'Redux-toolkit']
+stack: ['JavaScript', 'Firebase', 'React', 'Redux', 'Redux-toolkit', 'CSS']
+links: ['https://github.com/alltrust/Reminder-App']
 ---
 
 The moment you have been waiting for, a todo app with a state management library that it certainly did not need- but wanted. Using React with Redux to dispatch state throughout.

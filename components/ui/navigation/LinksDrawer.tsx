@@ -60,7 +60,6 @@ const LinksDrawer = () => {
             })}
           </List>
         </Box>
-        <SkillSet/>
       </Drawer>
     </Box>
   );

@@ -3,6 +3,7 @@ import AllProjectsSection from '../../components/sections/AllProjects';
 import { IProject } from '../../types/app/Iproject';
 import { getAllProjects } from '../../lib/fetch-project';
 import PageTemplate from '../../components/layout/PageTemplate';
+import SkillSet from '../../components/ui/skill-set';
 
 interface IAllProjectsPageProps {
   allProjects: IProject[];

@@ -1,126 +1,140 @@
+import { useState } from 'react';
+import useAppContext from '../../../hooks/useAppContext';
 import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import { useTheme, styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import { useTheme } from '@mui/material/styles';
 import NextImage from 'next/image';
+import {
+  formatTimeSince,
+  calcTimeDuration,
+} from '../../../utils/calculateTime';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { skills } from '../../../utils/SkillsList';
+import { IInitialIconFocusValues } from '../../../types/app/IInitialIconFocusValues';
+import SkillSlideWithTimeDisplay from './SkillSlideWithTimeDisplay';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-const DynamicSlider = styled(Slider)(({ color }) => ({
-  '.MuiSlider-rail': {
-    backgroundColor: color,
-  },
-  '& .MuiSlider-track': {
-    backgroundColor: color,
-  },
-}));
+const SkillSetCluster = () => {
+  const { dispatch } = useAppContext();
 
-const SkillSet = () => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const skills = [
-    {
-      name: 'JavaScript',
-      years: 2,
-      svg: '/svg/javascript-svgrepo-com.svg',
-      color: 'yellow',
-    },
-    {
-      name: 'TypeScript',
-      years: 1.5,
-      svg: '/svg/typescript-official-svgrepo-com.svg',
-      color: 'blue',
-    },
-    {
-      name: 'Node',
-      years: 1.5,
-      svg: '/svg/node-js-svgrepo-com.svg',
-      color: 'green',
-    },
-    {
-      name: 'React',
-      years: 1.75,
-      svg: '/svg/react-svgrepo-com.svg',
-      color: 'aquamarine',
-    },
-    {
-      name: 'Next',
-      years: 0.5,
-      svg: '/svg/next-dot-js-svgrepo-com.svg',
-      svgForDark: '/svg/nextjs-svgrepo-white.svg',
-      color: 'black',
-    },
-    {
-      name: 'MongoDb',
-      years: 1.5,
-      svg: '/svg/mongodb-svgrepo-com.svg',
-      color: 'green',
-    },
-    {
-      name: 'HTML',
-      years: 2,
-      svg: '/svg/html-5-svgrepo-com.svg',
-      color: 'green',
-    },
-    {
-      name: 'CSS',
-      years: 2,
-      svg: '/svg/css-3-svgrepo-com.svg',
-      color: 'green',
-    },
-  ];
+  const initialIconFocus = {
+    timeSince: '',
+    svg: '',
+    svgForDark: '',
+    isFocused: false,
+    name: '',
+  };
 
-  const marks = [
-    { value: 0, label: '0' },
-    { value: 33, label: '1y' },
-    { value: 66, label: '2y' },
-    { value: 100, label: '3y' },
-  ];
+  const [iconFocused, setIconFocused] =
+    useState<IInitialIconFocusValues>(initialIconFocus);
+
+  const [iconContainerRef, iconContainerInView] = useInView({
+    triggerOnce: true
+  });
+
+  const handleIconFocused = (
+    timeSince: string,
+    svg: string,
+    name: string,
+    svgForDark?: string
+  ) => {
+    dispatch({ type: 'TECH_SELECT', payload: name });
+
+    setIconFocused({
+      ...iconFocused,
+      isFocused: false,
+    });
+
+    setTimeout(() => {
+      setIconFocused({
+        name: name,
+        isFocused: true,
+        timeSince: timeSince,
+        svg: svg,
+        svgForDark: svgForDark ? svgForDark : undefined,
+      });
+    }, 500);
+  };
 
   return (
-    <Box
-      sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-      }}
-    >
-      {skills.map((skill, idx) => {
-        const { svg, name, years, svgForDark } = skill;
-        const lastEl = skills.length -1
-        const componentProps = lastEl === idx
-              ? {
-                  marks: marks,
-                }
-              : {};
+    <Box display={'flex'} flexDirection={'column-reverse'}>
+      <SkillSlideWithTimeDisplay iconFocused={iconFocused} />
+      <Box
+        
+        sx={{width:!isMobile ? "60%" : "100%" ,margin: 'auto' }}
+        ref={iconContainerRef}
+      >
+        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+          {skills.map((skill, idx) => {
+            const { svg, name, startDate, svgForDark } = skill;
 
-        return (
-          <Box
-            key={name}
-            display="flex"
-            flexDirection={'row'}
-            alignItems={'center'}
-            justifyContent={'space-evenly'}
-          >
-            <NextImage
-              src={
-                theme.palette.mode === 'dark' && svgForDark ? svgForDark : svg
-              }
-              alt="logo"
-              width={20}
-              height={20}
-            />
-            <DynamicSlider
-              disabled
-              sx={{ width: '80%' }}
-              value={(years / 3) * 100}
-              min={0}
-              max={100}
-              {...componentProps}
-            />
-          </Box>
-        );
-      })}
+            const timeSince = formatTimeSince(calcTimeDuration(startDate));
+            const delayTime = (idx * 0.1 + 1) / 2;
+
+            return (
+              <Grid key={name} item>
+                {iconContainerInView ? (
+                  <motion.button
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{
+                      scale: 1,
+                      opacity: 1,
+                      transition: {
+                        type: 'spring',
+                        stiffness: 200,
+                        delay: delayTime,
+                      },
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                    }}
+                    onClick={handleIconFocused.bind(
+                      null,
+                      timeSince,
+                      svg,
+                      name,
+                      svgForDark
+                    )}
+                  >
+                    <motion.div
+                      whileHover={{
+                        scale: 1.2,
+                        transition: {
+                          type: 'spring',
+                          stiffness: 400,
+                          damping: 10,
+                          delay: 0,
+                        },
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <NextImage
+                        src={
+                          theme.palette.mode === 'dark' && svgForDark
+                            ? svgForDark
+                            : svg
+                        }
+                        alt="logo"
+                        width={50}
+                        height={50}
+                        style={{ margin: 1 }}
+                      />
+                    </motion.div>
+                  </motion.button>
+                ) : null}
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Box>
     </Box>
   );
 };
 
-export default SkillSet;
+export default SkillSetCluster;
