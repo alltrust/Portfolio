@@ -32,7 +32,7 @@ const StyledProjectContent = ({
   subHeading,
 }: IStyledProjectContent) => {
   return (
-    <StyledContentPaper elevation={3} >
+    <StyledContentPaper elevation={3}>
       <Box>
         <Typography variant="h5" component="h5">
           {subHeading}

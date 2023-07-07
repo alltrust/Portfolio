@@ -4,6 +4,9 @@ import Box from '@mui/material/Box';
 import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 import { useTheme } from '@mui/material';
 import MotionButton from '../ui/MotionButton';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { getSiteName } from '../../utils/getSiteName';
 
 interface ILinkItem {
   slug: IProject['slug'];
@@ -15,24 +18,33 @@ interface ILinkItem {
 // return all links for github and deployment as well as link for THAT page;
 const LinksItem = ({ slug, links }: ILinkItem) => {
   const theme = useTheme();
+  //https://github.com/alltrust/B
+
+  console.log(getSiteName('https://github.com/alltrust/B'));
 
   return (
-    <Box>
-        <Link href={`/projects/${slug}`}>
-          <MotionButton>
-            <WysiwygIcon sx={{ color: theme.palette.secondary.dark }} />
-          </MotionButton>
-        </Link>
+    <Box display={'flex'}>
+      <Link href={`/projects/${slug}`}>
+        <MotionButton>
+          <WysiwygIcon sx={{ color: theme.palette.secondary.dark }} />
+        </MotionButton>
+      </Link>
+
       {links?.map((link) => {
+        const siteName = getSiteName(link);
+
         return (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            key={link}
-            href={link}
-          >
-            external Link
-          </a>
+          <MotionButton key={link}>
+            <a target="_blank" rel="noopener noreferrer" href={link}>
+              {siteName === 'github' ? (
+                <GitHubIcon sx={{ color: theme.palette.secondary.dark }} />
+              ) : (
+                <ArrowOutwardIcon
+                  sx={{ color: theme.palette.secondary.dark }}
+                />
+              )}
+            </a>
+          </MotionButton>
         );
       })}
     </Box>

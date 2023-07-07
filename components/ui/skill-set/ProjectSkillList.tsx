@@ -12,6 +12,9 @@ import FolderIcon from '@mui/icons-material/Folder';
 import ListItemText from '@mui/material/ListItemText';
 import NextLink from 'next/link';
 import Box from '@mui/material/Box';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import ArticleIcon from '@mui/icons-material/Article';
 
 interface IOpenInitialState {
   id: string;
@@ -20,11 +23,11 @@ interface IOpenInitialState {
 
 const ProjectSkillList = () => {
   const initialOpenState: IOpenInitialState[] = [];
+
   const [open, setOpen] = useState<IOpenInitialState[]>(initialOpenState);
   const { state } = useAppContext();
 
   const { focusedTechSkill, projectNamesWithLinks } = state;
-  console.log(projectNamesWithLinks);
 
   let matchingProjectNameWithLinks;
 
@@ -74,6 +77,7 @@ const ProjectSkillList = () => {
               const foundLi = open.findIndex((li) => {
                 return li.id === `li-${matches.name}-${idx}`;
               });
+
               return (
                 <Box key={`${matches.name}-${idx}`}>
                   <ListItemButton
@@ -97,15 +101,24 @@ const ProjectSkillList = () => {
                   >
                     <List component="div" disablePadding>
                       <ListItemButton sx={{ pl: 4 }}>
-                        <NextLink href={matches.links[0]}>github</NextLink>
+                        <NextLink href={matches.links[0]}>
+                          <GitHubIcon />
+                          github
+                        </NextLink>
                       </ListItemButton>
                       {matches.links[1] ? (
                         <ListItemButton sx={{ pl: 4 }}>
-                          <NextLink href={matches.links[0]}>github</NextLink>
+                          <NextLink href={matches.links[1]}>
+                            <ArrowOutwardIcon />
+                            Live Site
+                          </NextLink>
                         </ListItemButton>
                       ) : null}
                       <ListItemButton sx={{ pl: 4 }}>
-                        <NextLink href={matches.slug}>Article</NextLink>
+                        <NextLink href={matches.slug}>
+                          <ArticleIcon />
+                          Article
+                        </NextLink>
                       </ListItemButton>
                     </List>
                   </Collapse>
