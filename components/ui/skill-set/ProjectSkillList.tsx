@@ -136,7 +136,7 @@ const ProjectSkillList = () => {
                       ) : null}
                       <ListItemButton sx={{ pl: 4 }}>
                         <NextLink
-                          href={matches.slug}
+                          href={`/projects/${matches.slug}`}
                           style={{
                             display: 'flex',
                             justifyContent: 'space-between',
