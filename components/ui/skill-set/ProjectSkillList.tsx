@@ -15,6 +15,7 @@ import Box from '@mui/material/Box';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import ArticleIcon from '@mui/icons-material/Article';
+import { useTheme } from '@mui/material/styles';
 
 interface IOpenInitialState {
   id: string;
@@ -23,6 +24,7 @@ interface IOpenInitialState {
 
 const ProjectSkillList = () => {
   const initialOpenState: IOpenInitialState[] = [];
+  const theme = useTheme()
 
   const [open, setOpen] = useState<IOpenInitialState[]>(initialOpenState);
   const { state } = useAppContext();
@@ -101,22 +103,47 @@ const ProjectSkillList = () => {
                   >
                     <List component="div" disablePadding>
                       <ListItemButton sx={{ pl: 4 }}>
-                        <NextLink href={matches.links[0]}>
-                          <GitHubIcon />
-                          github
-                        </NextLink>
+                        <a
+                          href={matches.links[0]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            width: '50%',
+                          }}
+                        >
+                          <GitHubIcon sx={{color: theme.palette.secondary.dark}}/>
+                          Github
+                        </a>
                       </ListItemButton>
                       {matches.links[1] ? (
                         <ListItemButton sx={{ pl: 4 }}>
-                          <NextLink href={matches.links[1]}>
-                            <ArrowOutwardIcon />
+                          <a
+                            href={matches.links[1]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              width: '50%',
+                            }}
+                          >
+                            <ArrowOutwardIcon sx={{color: theme.palette.secondary.dark}} />
                             Live Site
-                          </NextLink>
+                          </a>
                         </ListItemButton>
                       ) : null}
                       <ListItemButton sx={{ pl: 4 }}>
-                        <NextLink href={matches.slug}>
-                          <ArticleIcon />
+                        <NextLink
+                          href={matches.slug}
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            width: '50%',
+                          }}
+                        >
+                          <ArticleIcon sx={{color: theme.palette.secondary.dark}}/>
                           Article
                         </NextLink>
                       </ListItemButton>

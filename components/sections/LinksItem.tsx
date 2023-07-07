@@ -13,14 +13,8 @@ interface ILinkItem {
   links: IProject['links'];
 }
 
-//render deployment and git icons and
-
-// return all links for github and deployment as well as link for THAT page;
 const LinksItem = ({ slug, links }: ILinkItem) => {
   const theme = useTheme();
-  //https://github.com/alltrust/B
-
-  console.log(getSiteName('https://github.com/alltrust/B'));
 
   return (
     <Box display={'flex'}>
